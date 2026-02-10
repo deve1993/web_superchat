@@ -15,7 +15,7 @@ export function MidCta() {
           Rispondi più veloce, vendi di più.
         </p>
         <a
-          href="#pricing"
+          href="#contatti"
           className="btn-glow mt-8 inline-block rounded-full bg-[#DBE3FF] px-8 py-3 text-sm font-semibold text-[#4F60FA] transition-all hover:bg-white"
         >
           Prenota una Demo

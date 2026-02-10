@@ -10,7 +10,7 @@ const navLinks = [
   { label: "Funzionalit\u00e0", href: "#features" },
   { label: "Moduli", href: "#modules" },
   { label: "Casi d'Uso", href: "#use-cases" },
-  { label: "Pricing", href: "#pricing" },
+  { label: "Contatti", href: "#contatti" },
 ];
 
 export function Navbar() {
@@ -56,7 +56,7 @@ export function Navbar() {
 
         <div className="flex items-center gap-3">
           <Link
-            href="#pricing"
+            href="#contatti"
             className="hidden rounded-full bg-[#DBE3FF] px-5 py-2 text-[13px] font-semibold text-[#4F60FA] transition-all hover:bg-white hover:shadow-[0_0_16px_rgba(79,96,250,0.3)] min-[844px]:inline-block"
           >
             Richiedi Demo
@@ -92,7 +92,7 @@ export function Navbar() {
             ))}
             <li className="mt-1 px-2 pb-1">
               <Link
-                href="#pricing"
+                href="#contatti"
                 className="block rounded-full bg-[#DBE3FF] py-2.5 text-center text-sm font-semibold text-[#4F60FA] transition-all hover:bg-white"
                 onClick={() => setMobileOpen(false)}
               >

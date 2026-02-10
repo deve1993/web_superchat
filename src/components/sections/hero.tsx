@@ -35,7 +35,7 @@ export function Hero() {
 
         <MotionWrapper delay={0.2} className="mt-8 flex flex-wrap items-center justify-center gap-4">
           <a
-            href="#pricing"
+            href="#contatti"
             className="btn-glow rounded-full bg-[#DBE3FF] px-8 py-3 text-sm font-semibold text-[#4F60FA] transition-all hover:bg-white"
           >
             Richiedi una Demo

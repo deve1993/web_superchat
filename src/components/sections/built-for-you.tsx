@@ -46,10 +46,10 @@ export function BuiltForYou() {
             Ogni modulo aggiunge una capacità specifica. Installa solo ciò che ti serve.
           </p>
           <a
-            href="#pricing"
+            href="#contatti"
             className="mt-6 inline-block rounded-full border border-[rgba(79,96,250,0.3)] px-6 py-3 text-sm font-medium text-white transition-all hover:border-[#4F60FA] hover:bg-[#4F60FA]/10"
           >
-            Vedi i Pacchetti
+            Contattaci
           </a>
         </MotionWrapper>
 

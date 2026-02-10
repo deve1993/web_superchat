@@ -24,7 +24,7 @@ export function FinalCta() {
           tutte le conversazioni clienti da Odoo.
         </p>
         <a
-          href="#pricing"
+          href="#contatti"
           className="btn-glow mt-8 inline-block rounded-full bg-[#DBE3FF] px-8 py-3 text-sm font-semibold text-[#4F60FA] transition-all hover:bg-white"
         >
           Richiedi una Demo Gratuita

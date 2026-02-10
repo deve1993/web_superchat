@@ -8,7 +8,7 @@ import { Benefits } from "@/components/sections/benefits";
 import { Indicators } from "@/components/sections/indicators";
 import { Testimonials } from "@/components/sections/testimonials";
 import { HowToUse } from "@/components/sections/how-to-use";
-import { Pricing } from "@/components/sections/pricing";
+import { ContactForm } from "@/components/sections/contact-form";
 import { FinalCta } from "@/components/sections/final-cta";
 import { Footer } from "@/components/sections/footer";
 import { GradientSeparator } from "@/components/ui/gradient-separator";
@@ -38,7 +38,7 @@ export default function Home() {
         <GradientSeparator />
         <HowToUse />
         <GradientSeparator />
-        <Pricing />
+        <ContactForm />
         <GradientSeparator />
         <FinalCta />
       </main>
