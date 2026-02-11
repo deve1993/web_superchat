@@ -1,18 +1,21 @@
+import Image from "next/image";
 import { MotionWrapper } from "../ui/motion-wrapper";
 
 export function MidCta() {
   return (
     <section className="relative px-6 py-20">
-      <img
+      <Image
         src="/images/net-5.png"
         alt=""
+        width={250}
+        height={250}
         className="pointer-events-none absolute top-0 right-0 w-[250px] opacity-15"
       />
       <MotionWrapper className="relative z-10 mx-auto max-w-[800px] text-center">
         <p className="text-lg leading-relaxed text-white md:text-xl">
-          Centralizza tutte le comunicazioni dei tuoi clienti in Odoo.
+          Zero lead persi, notifiche automatiche su ogni cambio stage,
           <br className="hidden md:block" />
-          Rispondi più veloce, vendi di più.
+          assegnazione in un click. Il tuo CRM lavora per te.
         </p>
         <a
           href="#contatti"

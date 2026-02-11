@@ -1,6 +1,6 @@
-import { InboxMockup } from "../ui/mockups";
 import { SectionSubtitle } from "../ui/section-subtitle";
 import { MotionWrapper } from "../ui/motion-wrapper";
+import { HeroVideo } from "../ui/hero-video";
 
 export function Hero() {
   return (
@@ -19,17 +19,17 @@ export function Hero() {
 
       <div className="relative z-10 flex flex-col items-center">
         <MotionWrapper delay={0} className="flex flex-col items-center">
-          <SectionSubtitle text="Integrazione Nativa Odoo 18" />
+          <SectionSubtitle text="CRM & Automazione per Odoo 18" />
         </MotionWrapper>
 
         <MotionWrapper delay={0.1} className="flex flex-col items-center">
           <h1 className="mt-6 max-w-[800px] text-center text-4xl font-bold leading-tight text-white md:text-5xl lg:text-[64px] lg:leading-[1.15]">
-            Tutti i Tuoi Canali,{" "}
-            <span className="lg:whitespace-nowrap">Un&apos;Unica Inbox in Odoo</span>
+            Dal Lead alla Vendita,{" "}
+            <span className="lg:whitespace-nowrap">Tutto Automatico in Odoo</span>
           </h1>
 
           <p className="mt-6 max-w-[600px] text-center text-base text-[#73799B] md:text-lg">
-            WhatsApp, Instagram, Messenger, Email, SMS e Telegram — gestiti direttamente dal tuo Odoo
+            Acquisisci lead dal web, automatizza le notifiche, assegna al team giusto — su WhatsApp, Email e 4 canali in più
           </p>
         </MotionWrapper>
 
@@ -49,7 +49,7 @@ export function Hero() {
         </MotionWrapper>
 
         <MotionWrapper delay={0.4} className="relative mt-12 w-full max-w-[1000px]">
-          <InboxMockup />
+          <HeroVideo />
         </MotionWrapper>
       </div>
     </section>
