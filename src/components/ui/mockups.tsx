@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
-import { MessageCircle, Instagram, Facebook, Mail, MessageSquare, Send } from 'lucide-react';
+import { MessageCircle, Instagram, Facebook, Mail, MessageSquare, Send, Target } from 'lucide-react';
+import { AssignmentVideo } from './assignment-video';
 
 const cardBase = "bg-[#06051E] border border-[rgba(79,96,250,0.12)] rounded-2xl overflow-hidden relative";
 const flexCenter = "flex items-center justify-center";
@@ -99,12 +100,12 @@ const featureChannels = [
   { icon: Send, color: '#0088CC', label: 'Telegram' },
 ];
 
-export const FeatureMockup = ({ variant, className }: { variant: 'channels' | 'webhook' | 'automation'; className?: string }) => {
+export const FeatureMockup = ({ variant, className }: { variant: 'channels' | 'webhook' | 'automation' | 'crm-lead' | 'marketing-auto' | 'assignment'; className?: string }) => {
   return (
     <div className={`w-full ${flexCenter} ${className || ''}`}>
       {variant === 'channels' && (
         <div
-          className="relative w-full overflow-hidden py-4"
+          className="relative w-full overflow-hidden py-4 space-y-4"
           style={{
             maskImage: 'linear-gradient(to right, transparent, black 12%, black 88%, transparent)',
             WebkitMaskImage: 'linear-gradient(to right, transparent, black 12%, black 88%, transparent)',
@@ -115,7 +116,31 @@ export const FeatureMockup = ({ variant, className }: { variant: 'channels' | 'w
               const Icon = ch.icon;
               return (
                 <div
-                  key={`${ch.label}-${i}`}
+                  key={`fwd-${ch.label}-${i}`}
+                  className="flex flex-col items-center gap-2.5 shrink-0"
+                >
+                  <div
+                    className="w-16 h-16 rounded-2xl bg-[#00031C] border-2 flex items-center justify-center"
+                    style={{
+                      borderColor: `${ch.color}35`,
+                      boxShadow: `0 0 20px ${ch.color}18`,
+                    }}
+                  >
+                    <Icon className="w-8 h-8" style={{ color: ch.color }} />
+                  </div>
+                  <span className="text-[11px] font-medium whitespace-nowrap" style={{ color: `${ch.color}BB` }}>
+                    {ch.label}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+          <div className="flex w-max gap-12 animate-marquee-reverse">
+            {[...featureChannels, ...featureChannels].map((ch, i) => {
+              const Icon = ch.icon;
+              return (
+                <div
+                  key={`rev-${ch.label}-${i}`}
                   className="flex flex-col items-center gap-2.5 shrink-0"
                 >
                   <div
@@ -209,6 +234,92 @@ export const FeatureMockup = ({ variant, className }: { variant: 'channels' | 'w
             <span className="text-[10px] font-medium text-[#28C840]">Inviato</span>
           </div>
         </div>
+      )}
+
+      {variant === 'crm-lead' && (
+        <div className="w-full max-w-sm px-6 py-4 space-y-3">
+          <div className="crm-lead-step-1 flex items-center gap-3 rounded-lg bg-[#4F60FA]/5 border border-[#4F60FA]/20 px-3 py-2.5">
+            <div className="w-8 h-8 rounded-lg bg-[#4F60FA]/20 flex items-center justify-center shrink-0">
+              <span className="text-[#4F60FA] text-xs font-bold">W</span>
+            </div>
+            <div className="flex-1 min-w-0">
+              <div className="text-[11px] font-semibold text-[#DBE3FF]">Form Web Compilato</div>
+              <div className="text-[10px] text-[#73799B]">mario.rossi@azienda.it</div>
+            </div>
+            <div className="crm-lead-dot w-2 h-2 rounded-full bg-[#4F60FA]" />
+          </div>
+          <div className="crm-lead-line-1 flex items-center justify-center gap-1">
+            <div className="w-0.5 h-4 bg-gradient-to-b from-[#4F60FA] to-[#25D366]" />
+          </div>
+          <div className="crm-lead-step-2 flex items-center gap-3 rounded-lg bg-[#25D366]/5 border border-[#25D366]/20 px-3 py-2.5">
+            <div className="w-8 h-8 rounded-lg bg-[#25D366]/20 flex items-center justify-center shrink-0">
+              <Target className="w-4 h-4 text-[#25D366]" />
+            </div>
+            <div className="flex-1 min-w-0">
+              <div className="text-[11px] font-semibold text-[#DBE3FF]">Lead Creato in Odoo</div>
+              <div className="text-[10px] text-[#73799B]">Stage: Nuovo → Qualificato</div>
+            </div>
+            <span className="crm-lead-badge-2 text-[#25D366] text-xs font-bold">Auto</span>
+          </div>
+          <div className="crm-lead-line-2 flex items-center justify-center gap-1">
+            <div className="w-0.5 h-4 bg-gradient-to-b from-[#25D366] to-[#F59E0B]" />
+          </div>
+          <div className="crm-lead-step-3 flex items-center gap-3 rounded-lg bg-[#F59E0B]/5 border border-[#F59E0B]/20 px-3 py-2.5">
+            <div className="w-8 h-8 rounded-lg bg-[#F59E0B]/20 flex items-center justify-center shrink-0">
+              <MessageCircle className="w-4 h-4 text-[#F59E0B]" />
+            </div>
+            <div className="flex-1 min-w-0">
+              <div className="text-[11px] font-semibold text-[#DBE3FF]">Template Inviato</div>
+              <div className="text-[10px] text-[#73799B]">WhatsApp + Email al commerciale</div>
+            </div>
+            <span className="crm-lead-badge-3 text-[#F59E0B] text-xs">✓✓</span>
+          </div>
+        </div>
+      )}
+
+      {variant === 'marketing-auto' && (
+        <div className="w-full max-w-sm px-6 py-4">
+          <div className="flex flex-col items-center gap-2">
+            <div className="ma-trigger w-full flex items-center gap-2 rounded-lg bg-[#4F60FA]/10 border border-[#4F60FA]/20 px-3 py-2">
+              <div className="w-6 h-6 rounded bg-[#4F60FA]/30 flex items-center justify-center">
+                <span className="text-[10px] text-[#4F60FA] font-bold">IF</span>
+              </div>
+              <span className="text-[10px] text-[#DBE3FF]">Lead → Stage &quot;Qualificato&quot;</span>
+            </div>
+
+            <div className="flex gap-8 w-full">
+              <div className="flex-1 flex flex-col items-center gap-2">
+                <div className="ma-left-line-1 w-0.5 h-3 bg-[#25D366]/40" />
+                <div className="ma-left-1 w-full rounded-lg bg-[#25D366]/5 border border-[#25D366]/20 px-2.5 py-2 text-center">
+                  <div className="text-[9px] text-[#25D366] font-semibold">INVIA</div>
+                  <div className="text-[10px] text-[#73799B]">WhatsApp benvenuto</div>
+                </div>
+                <div className="ma-left-line-2 w-0.5 h-3 bg-[#25D366]/40" />
+                <div className="ma-left-2 w-full rounded-lg bg-[#0088CC]/5 border border-[#0088CC]/20 px-2.5 py-2 text-center">
+                  <div className="text-[9px] text-[#0088CC] font-semibold">WAIT 2H</div>
+                  <div className="text-[10px] text-[#73799B]">Follow-up Email</div>
+                </div>
+              </div>
+
+              <div className="flex-1 flex flex-col items-center gap-2">
+                <div className="ma-right-line-1 w-0.5 h-3 bg-[#F59E0B]/40" />
+                <div className="ma-right-1 w-full rounded-lg bg-[#F59E0B]/5 border border-[#F59E0B]/20 px-2.5 py-2 text-center">
+                  <div className="text-[9px] text-[#F59E0B] font-semibold">NO RISPOSTA</div>
+                  <div className="text-[10px] text-[#73799B]">Reminder 48h</div>
+                </div>
+                <div className="ma-right-line-2 w-0.5 h-3 bg-[#F59E0B]/40" />
+                <div className="ma-right-2 w-full rounded-lg bg-[#E1306C]/5 border border-[#E1306C]/20 px-2.5 py-2 text-center">
+                  <div className="text-[9px] text-[#E1306C] font-semibold">ESCALATE</div>
+                  <div className="text-[10px] text-[#73799B]">Notifica manager</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {variant === 'assignment' && (
+        <AssignmentVideo />
       )}
     </div>
   );
@@ -312,7 +423,7 @@ export const ModuleMockup = ({ moduleIndex }: { moduleIndex: number }) => {
   );
 };
 
-export const BenefitMockup = ({ variant }: { variant: 'crm' | 'quotes' | 'campaigns' | 'security' }) => {
+export const BenefitMockup = ({ variant }: { variant: 'crm' | 'quotes' | 'campaigns' | 'security' | 'marketing-auto-benefit' | 'assignment-benefit' }) => {
   if (variant === 'security') {
     return (
       <div className="flex flex-col items-center mt-4 gap-5">
@@ -454,59 +565,108 @@ export const BenefitMockup = ({ variant }: { variant: 'crm' | 'quotes' | 'campai
         </div>
       )}
 
+      {variant === 'marketing-auto-benefit' && (
+        <div className={`${cardBase} w-full h-56 mt-4 ${flexCenter} bg-[#050925]`}>
+          <div className="w-full max-w-xs px-6 py-4">
+            <div className="flex flex-col items-center gap-2">
+              <div className="w-full flex items-center gap-2 rounded-lg bg-[#4F60FA]/10 border border-[#4F60FA]/20 px-3 py-2">
+                <div className="w-6 h-6 rounded bg-[#4F60FA]/30 flex items-center justify-center">
+                  <span className="text-[10px] text-[#4F60FA] font-bold">IF</span>
+                </div>
+                <span className="text-[10px] text-[#DBE3FF]">Stage → &quot;Qualificato&quot;</span>
+              </div>
+
+              <div className="flex gap-6 w-full">
+                <div className="flex-1 flex flex-col items-center gap-1.5">
+                  <div className="w-0.5 h-2.5 bg-[#25D366]/40" />
+                  <div className="w-full rounded-lg bg-[#25D366]/5 border border-[#25D366]/20 px-2 py-1.5 text-center">
+                    <div className="text-[9px] text-[#25D366] font-semibold">SEND</div>
+                    <div className="text-[9px] text-[#73799B]">WhatsApp</div>
+                  </div>
+                  <div className="w-0.5 h-2.5 bg-[#25D366]/40" />
+                  <div className="w-full rounded-lg bg-[#0088CC]/5 border border-[#0088CC]/20 px-2 py-1.5 text-center">
+                    <div className="text-[9px] text-[#0088CC] font-semibold">WAIT</div>
+                    <div className="text-[9px] text-[#73799B]">Email 2h</div>
+                  </div>
+                </div>
+
+                <div className="flex-1 flex flex-col items-center gap-1.5">
+                  <div className="w-0.5 h-2.5 bg-[#F59E0B]/40" />
+                  <div className="w-full rounded-lg bg-[#F59E0B]/5 border border-[#F59E0B]/20 px-2 py-1.5 text-center">
+                    <div className="text-[9px] text-[#F59E0B] font-semibold">NOOP</div>
+                    <div className="text-[9px] text-[#73799B]">Reminder</div>
+                  </div>
+                  <div className="w-0.5 h-2.5 bg-[#F59E0B]/40" />
+                  <div className="w-full rounded-lg bg-[#E1306C]/5 border border-[#E1306C]/20 px-2 py-1.5 text-center">
+                    <div className="text-[9px] text-[#E1306C] font-semibold">ESC</div>
+                    <div className="text-[9px] text-[#73799B]">Manager</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {variant === 'assignment-benefit' && (
+        <div className={`${cardBase} w-full h-56 mt-4 ${flexCenter} bg-[#050925]`}>
+          <div className="w-full max-w-xs px-6 py-3 space-y-2">
+            <div className="flex items-center gap-2 mb-2">
+              <div className="h-4 flex-1 rounded bg-[#1D217B]/30" />
+              <span className="text-[9px] text-[#73799B] shrink-0">3 lead</span>
+            </div>
+            {[
+              { initials: 'MR', name: 'Mario R.', role: 'Sales', color: '#4F60FA', lead: 'Acme Corp' },
+              { initials: 'LB', name: 'Laura B.', role: 'Account', color: '#25D366', lead: 'Beta Srl' },
+              { initials: 'MT', name: 'Marco T.', role: 'Support', color: '#F59E0B', lead: 'Gamma SpA' },
+            ].map((user) => (
+              <div key={user.name} className="flex items-center gap-2.5 rounded-lg bg-[#050A29] border border-[rgba(79,96,250,0.12)] px-2.5 py-1.5">
+                <div
+                  className="w-6 h-6 rounded-full flex items-center justify-center text-[9px] font-bold text-white shrink-0"
+                  style={{ backgroundColor: `${user.color}30`, border: `1.5px solid ${user.color}50` }}
+                >
+                  {user.initials}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="text-[10px] font-medium text-[#DBE3FF]">{user.lead}</div>
+                  <div className="text-[8px] text-[#73799B]">{user.name} · {user.role}</div>
+                </div>
+                <div
+                  className="px-1.5 py-0.5 rounded-full text-[8px] font-semibold"
+                  style={{ backgroundColor: `${user.color}15`, color: user.color }}
+                >
+                  Assegnato
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
     </div>
   );
 };
 
+const stepImages: Record<number, { src: string; alt: string }> = {
+  1: { src: "/images/step-1.webp", alt: "Odoo Apps Store — installazione modulo SuperChat" },
+  2: { src: "/images/step-2.webp", alt: "Configurazione workspace SuperChat in Odoo" },
+  3: { src: "/images/step-3.webp", alt: "Lista messaggi SuperChat — conversazioni in entrata e uscita" },
+};
+
 export const StepMockup = ({ step }: { step: number }) => {
+  const img = stepImages[step];
+
   return (
-    <div className={`${cardBase} w-full h-full min-h-[300px] ${flexCenter} bg-[#06051E]`}>
-      {step === 1 && (
-        <div className="flex flex-col items-center gap-4">
-          <div className="w-24 h-24 bg-[#1D217B]/20 rounded-2xl border-2 border-dashed border-[#4F60FA]/40 flex items-center justify-center">
-            <div className="w-12 h-12 bg-[#4F60FA] rounded-lg shadow-[0_0_30px_rgba(79,96,250,0.4)]" />
-          </div>
-          <div className="flex gap-2">
-            <div className="w-2 h-2 rounded-full bg-[#4F60FA]" />
-            <div className="w-2 h-2 rounded-full bg-[#1D217B]" />
-            <div className="w-2 h-2 rounded-full bg-[#1D217B]" />
-          </div>
-          <div className="text-[#73799B] text-sm font-mono mt-2">npm install superchat_base</div>
-        </div>
-      )}
-
-      {step === 2 && (
-        <div className="w-3/4 bg-[#050A29] rounded-xl border border-[rgba(79,96,250,0.12)] p-4 space-y-4">
-          <div className="flex justify-between items-center border-b border-[rgba(79,96,250,0.12)] pb-2">
-            <div className="h-3 w-20 bg-[#73799B]/30 rounded" />
-            <div className="w-8 h-4 bg-[#4F60FA] rounded-full" />
-          </div>
-          <div className="space-y-2">
-            <div className="h-8 w-full bg-[#00031C] rounded border border-[rgba(79,96,250,0.12)]" />
-            <div className="h-8 w-full bg-[#00031C] rounded border border-[rgba(79,96,250,0.12)]" />
-          </div>
-          <div className="w-full h-8 bg-[#4F60FA] rounded flex items-center justify-center text-white text-xs font-bold">
-            CONNECT
-          </div>
-        </div>
-      )}
-
-      {step === 3 && (
-        <div className="w-3/4 h-3/4 bg-[#050A29] rounded-xl border border-[rgba(79,96,250,0.12)] flex flex-col overflow-hidden">
-          <div className="h-10 bg-[#1D217B]/20 border-b border-[rgba(79,96,250,0.12)] flex items-center px-3 gap-2">
-            <div className="w-6 h-6 rounded-full bg-[#4F60FA]" />
-            <div className="h-2 w-20 bg-[#73799B]/30 rounded" />
-          </div>
-          <div className="flex-1 p-3 space-y-3">
-            <div className="bg-[#1D217B]/20 p-2 rounded-lg rounded-tl-none w-2/3">
-              <div className="h-2 w-full bg-[#73799B]/20 rounded" />
-            </div>
-            <div className="bg-[#4F60FA]/20 p-2 rounded-lg rounded-tr-none w-2/3 ml-auto border border-[#4F60FA]/20">
-              <div className="h-2 w-full bg-[#DBE3FF]/40 rounded" />
-            </div>
-          </div>
-        </div>
+    <div className={`${cardBase} relative w-full h-full min-h-[300px] bg-[#06051E] overflow-hidden`}>
+      {img && (
+        <Image
+          src={img.src}
+          alt={img.alt}
+          fill
+          sizes="(max-width: 768px) 100vw, 800px"
+          className="object-contain"
+          loading="lazy"
+        />
       )}
     </div>
   );
@@ -523,13 +683,14 @@ const channels = [
 
 export const EcosystemMockup = () => {
   return (
-    <div className="relative w-full max-w-[700px] aspect-square md:aspect-[16/9] flex items-center justify-center">
-      <div className="relative z-10 w-32 h-32 bg-[#06051E] rounded-full border-2 border-[#4F60FA] shadow-[0_0_50px_rgba(79,96,250,0.3)] flex items-center justify-center">
+    <div className="relative w-full max-w-[350px] md:max-w-[400px] aspect-square flex items-center justify-center">
+      <div className="relative z-10 w-20 h-20 md:w-32 md:h-32 bg-[#06051E] rounded-full border-2 border-[#4F60FA] shadow-[0_0_50px_rgba(79,96,250,0.3)] flex items-center justify-center">
         <Image
           src="/icons/superchat-logo.png"
           alt="SuperChat"
           width={72}
           height={72}
+          className="w-10 h-10 md:w-[72px] md:h-[72px]"
           priority
         />
       </div>
@@ -545,23 +706,23 @@ export const EcosystemMockup = () => {
               animationDelay: `${-(ch.deg / 360) * 40}s`,
             }}
           >
-            <div style={{ transform: 'translateX(140px)' }}>
+            <div style={{ transform: 'translateX(clamp(80px, 20vw, 140px))' }}>
               <div
                 className="flex flex-col items-center -translate-x-1/2 -translate-y-1/2"
                 style={{ animation: 'orbit 40s linear infinite reverse', animationDelay: `${-(ch.deg / 360) * 40}s` }}
               >
                 <div
-                  className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#050A29]"
+                  className="flex h-12 w-12 md:h-16 md:w-16 items-center justify-center rounded-2xl bg-[#050A29]"
                   style={{
                     borderColor: ch.color,
                     borderWidth: '1px',
                     boxShadow: `0 0 12px ${ch.color}20`,
                   }}
                 >
-                  <Icon className="w-7 h-7" style={{ color: ch.color }} />
+                  <Icon className="w-5 h-5 md:w-7 md:h-7" style={{ color: ch.color }} />
                 </div>
                 <span
-                  className="whitespace-nowrap text-[10px] font-medium mt-1.5"
+                  className="hidden md:block whitespace-nowrap text-[10px] font-medium mt-1.5"
                   style={{ color: `${ch.color}AA` }}
                 >
                   {ch.label}
@@ -572,7 +733,7 @@ export const EcosystemMockup = () => {
         );
       })}
 
-      <svg className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-30" width="280" height="280" style={{ animation: 'orbit 40s linear infinite' }}>
+      <svg className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-30 w-[160px] h-[160px] md:w-[280px] md:h-[280px]" viewBox="0 0 280 280" style={{ animation: 'orbit 40s linear infinite' }}>
         <circle cx="140" cy="140" r="140" fill="none" stroke="#4F60FA" strokeWidth="1" strokeDasharray="4 4" />
       </svg>
     </div>
