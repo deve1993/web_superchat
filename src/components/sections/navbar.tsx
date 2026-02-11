@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
+import { Logo } from "../ui/logo";
 import { motion } from "framer-motion";
 
 const navLinks = [
@@ -37,9 +38,9 @@ export function Navbar() {
             : "border-transparent bg-[#06051E]/30 backdrop-blur-sm"
         }`}
       >
-        <Link href="/" className="shrink-0">
-          <img src="/icons/logo-mobile.svg" alt="SuperChat per Odoo" className="h-7 w-auto" />
-        </Link>
+         <Link href="/" className="shrink-0">
+           <Logo className="text-[22px]" />
+         </Link>
 
         <ul className="hidden items-center gap-1 min-[844px]:flex">
           {navLinks.map((link) => (
@@ -64,7 +65,8 @@ export function Navbar() {
 
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="flex h-9 w-9 items-center justify-center rounded-full text-white transition-all hover:bg-white/10 min-[844px]:hidden"
+            aria-label={mobileOpen ? "Chiudi menu" : "Apri menu"}
+            className="flex h-11 w-11 items-center justify-center rounded-full text-white transition-all hover:bg-white/10 min-[844px]:hidden"
           >
             {mobileOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
