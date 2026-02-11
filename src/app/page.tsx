@@ -2,6 +2,7 @@ import { Navbar } from "@/components/sections/navbar";
 import { Hero } from "@/components/sections/hero";
 import { About } from "@/components/sections/about";
 import { Features } from "@/components/sections/features";
+import { CrmWorkflow } from "@/components/sections/crm-workflow";
 import { MidCta } from "@/components/sections/mid-cta";
 import { BuiltForYou } from "@/components/sections/built-for-you";
 import { Benefits } from "@/components/sections/benefits";
@@ -26,6 +27,8 @@ export default function Home() {
         <GradientSeparator />
         <Features />
         <GradientSeparator />
+        <CrmWorkflow />
+        <GradientSeparator />
         <MidCta />
         <GradientSeparator />
         <BuiltForYou />
@@ -37,9 +40,7 @@ export default function Home() {
         <Testimonials />
         <GradientSeparator />
         <HowToUse />
-        <GradientSeparator />
         <ContactForm />
-        <GradientSeparator />
         <FinalCta />
       </main>
       <Footer />
