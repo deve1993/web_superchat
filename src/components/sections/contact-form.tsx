@@ -1,7 +1,8 @@
 "use client";
 
 import { useActionState, useRef, useEffect } from "react";
-import { Send } from "lucide-react";
+import Image from "next/image";
+import { Send, ChevronDown } from "lucide-react";
 import { SectionSubtitle } from "../ui/section-subtitle";
 import { MotionWrapper } from "../ui/motion-wrapper";
 import {
@@ -19,7 +20,7 @@ const packages = [
 ];
 
 const inputClasses =
-  "w-full rounded-xl border border-[rgba(79,96,250,0.15)] bg-[#0a0a2a] px-4 py-3 text-sm text-white placeholder:text-[#73799B] transition-all focus:border-[#4F60FA] focus:outline-none focus:ring-1 focus:ring-[#4F60FA]/40";
+  "w-full rounded-xl border border-[rgba(79,96,250,0.15)] bg-[#0a0a2a] px-4 py-3 text-sm text-white placeholder:text-[#73799B] transition-all focus:border-[#4F60FA] focus:outline-none focus:ring-2 focus:ring-[#4F60FA]/40";
 
 export function ContactForm() {
   const [state, formAction, isPending] = useActionState(
@@ -35,17 +36,14 @@ export function ContactForm() {
   }, [state.success]);
 
   return (
-    <section id="contatti" className="relative px-6 py-24">
-
-      <img
-        src="/images/net-3.png"
+    <section id="contatti" className="relative overflow-hidden px-6 py-24">
+      <Image
+        src="/images/bg-contact.webp"
         alt=""
-        className="pointer-events-none absolute top-0 left-0 w-[250px] opacity-10"
-      />
-      <img
-        src="/images/net-4.png"
-        alt=""
-        className="pointer-events-none absolute bottom-0 right-0 w-[280px] opacity-10"
+        fill
+        sizes="100vw"
+        className="pointer-events-none object-cover opacity-20"
+        loading="lazy"
       />
 
       <div className="relative z-10 mx-auto max-w-[1280px]">
@@ -64,49 +62,96 @@ export function ContactForm() {
           <form
             ref={formRef}
             action={formAction}
-            className="card-hover w-full max-w-[560px] overflow-hidden rounded-3xl border border-[#4F60FA] px-8 py-10 shadow-[0_0_40px_rgba(79,96,250,0.15)] md:px-10"
+            className="card-hover w-full max-w-[560px] overflow-hidden rounded-3xl border border-[#4F60FA] px-5 py-8 shadow-[0_0_40px_rgba(79,96,250,0.15)] sm:px-8 sm:py-10 md:px-10"
             style={{
               background: `radial-gradient(circle, rgba(200,210,230,0.06) 2px, transparent 2px), #050A29`,
               backgroundSize: "24px 24px",
             }}
           >
+            <input
+              type="text"
+              name="website"
+              autoComplete="off"
+              tabIndex={-1}
+              aria-hidden="true"
+              className="absolute h-0 w-0 overflow-hidden opacity-0"
+            />
+
             <div className="space-y-5">
-              <div>
-                <label
-                  htmlFor="name"
-                  className="mb-1.5 block text-sm font-medium text-[#DBE3FF]"
-                >
-                  Nome
-                </label>
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  required
-                  minLength={2}
-                  placeholder="Il tuo nome"
-                  className={inputClasses}
-                />
+              <div className="grid gap-5 sm:grid-cols-2">
+                <div>
+                  <label
+                    htmlFor="name"
+                    className="mb-1.5 block text-sm font-medium text-[#DBE3FF]"
+                  >
+                    Nome <span className="text-red-400">*</span>
+                  </label>
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    required
+                    minLength={2}
+                    placeholder="Il tuo nome"
+                    aria-describedby={!state.success && state.message ? "form-feedback" : undefined}
+                    className={inputClasses}
+                  />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="email"
+                    className="mb-1.5 block text-sm font-medium text-[#DBE3FF]"
+                  >
+                    Email <span className="text-red-400">*</span>
+                  </label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    required
+                    placeholder="nome@azienda.com"
+                    aria-describedby={!state.success && state.message ? "form-feedback" : undefined}
+                    className={inputClasses}
+                  />
+                </div>
               </div>
 
-              <div>
-                <label
-                  htmlFor="email"
-                  className="mb-1.5 block text-sm font-medium text-[#DBE3FF]"
-                >
-                  Email
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  placeholder="nome@azienda.com"
-                  className={inputClasses}
-                />
+              <div className="grid gap-5 sm:grid-cols-2">
+                <div>
+                  <label
+                    htmlFor="phone"
+                    className="mb-1.5 block text-sm font-medium text-[#DBE3FF]"
+                  >
+                    Telefono
+                  </label>
+                  <input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    placeholder="+39 333 123 4567"
+                    className={inputClasses}
+                  />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="company"
+                    className="mb-1.5 block text-sm font-medium text-[#DBE3FF]"
+                  >
+                    Azienda
+                  </label>
+                  <input
+                    id="company"
+                    name="company"
+                    type="text"
+                    placeholder="Nome azienda"
+                    className={inputClasses}
+                  />
+                </div>
               </div>
 
-              <div>
+              <div className="relative">
                 <label
                   htmlFor="pacchetto"
                   className="mb-1.5 block text-sm font-medium text-[#DBE3FF]"
@@ -116,7 +161,7 @@ export function ContactForm() {
                 <select
                   id="pacchetto"
                   name="pacchetto"
-                  className={inputClasses + " appearance-none"}
+                  className={inputClasses + " appearance-none pr-10"}
                 >
                   {packages.map((pkg) => (
                     <option key={pkg.value} value={pkg.value}>
@@ -124,6 +169,10 @@ export function ContactForm() {
                     </option>
                   ))}
                 </select>
+                <ChevronDown
+                  size={16}
+                  className="pointer-events-none absolute right-4 top-[38px] text-[#73799B]"
+                />
               </div>
 
               <div>
@@ -131,7 +180,7 @@ export function ContactForm() {
                   htmlFor="message"
                   className="mb-1.5 block text-sm font-medium text-[#DBE3FF]"
                 >
-                  Messaggio
+                  Messaggio <span className="text-red-400">*</span>
                 </label>
                 <textarea
                   id="message"
@@ -140,13 +189,38 @@ export function ContactForm() {
                   minLength={10}
                   rows={4}
                   placeholder="Raccontaci il tuo progetto o cosa vorresti approfondire..."
+                  aria-describedby={!state.success && state.message ? "form-feedback" : undefined}
                   className={inputClasses + " resize-none"}
                 />
+              </div>
+
+              <div className="flex items-start gap-3">
+                <input
+                  id="privacy"
+                  name="privacy"
+                  type="checkbox"
+                  required
+                  className="mt-0.5 h-5 w-5 shrink-0 cursor-pointer rounded border-[rgba(79,96,250,0.3)] bg-[#0a0a2a] text-[#4F60FA] accent-[#4F60FA] focus:ring-2 focus:ring-[#4F60FA]/40"
+                />
+                <label htmlFor="privacy" className="text-xs leading-relaxed text-[#73799B]">
+                  Acconsento al trattamento dei miei dati personali ai sensi del{" "}
+                  <a
+                    href="/privacy"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#4F60FA] underline underline-offset-2 hover:text-[#DBE3FF]"
+                  >
+                    GDPR (Reg. UE 2016/679)
+                  </a>
+                  . <span className="text-red-400">*</span>
+                </label>
               </div>
             </div>
 
             {state.message && (
               <div
+                id="form-feedback"
+                role="alert"
                 className={`mt-5 rounded-xl px-4 py-3 text-sm font-medium ${
                   state.success
                     ? "border border-emerald-500/30 bg-emerald-500/10 text-emerald-300"
