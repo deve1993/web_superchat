@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Check } from "lucide-react";
 import { SectionSubtitle } from "../ui/section-subtitle";
 import { MotionWrapper, MotionStagger, MotionChild } from "../ui/motion-wrapper";
@@ -61,14 +62,18 @@ const plans = [
 export function Pricing() {
   return (
     <section id="pricing" className="relative px-6 py-24">
-      <img
+      <Image
         src="/images/net-3.png"
         alt=""
+        width={250}
+        height={250}
         className="pointer-events-none absolute top-0 left-0 w-[250px] opacity-10"
       />
-      <img
+      <Image
         src="/images/net-4.png"
         alt=""
+        width={280}
+        height={280}
         className="pointer-events-none absolute bottom-0 right-0 w-[280px] opacity-10"
       />
       <div className="relative z-10 mx-auto max-w-[1280px]">
@@ -100,7 +105,7 @@ export function Pricing() {
                   : {}
               }
             >
-              <img src={plan.icon} alt="" className="mb-4 h-10 w-10" />
+              <Image src={plan.icon} alt="" width={40} height={40} className="mb-4 h-10 w-10" />
               <h3 className="text-lg font-semibold text-white">{plan.name}</h3>
               <p className="mt-2 text-sm leading-relaxed text-[#73799B]">
                 {plan.description}

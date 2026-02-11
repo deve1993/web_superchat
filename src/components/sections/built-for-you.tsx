@@ -9,13 +9,13 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 const modules = [
-  { title: "SuperChat Base", description: "Il cuore del sistema: API, webhook, gestione 6 canali e coda eventi" },
-  { title: "Chatter Interface", description: "Interfaccia chat a 3 colonne con 17 componenti OWL reattivi" },
-  { title: "Chatter Extension", description: "Pulsante WhatsApp in qualsiasi modulo Odoo con mail.thread" },
-  { title: "CRM Integration", description: "Automazione invio template su creazione e aggiornamento lead" },
-  { title: "Sale Integration", description: "Invio veloce preventivi via WhatsApp + Email con link portale" },
-  { title: "Campaign", description: "Campagne WhatsApp massive con scheduling e rate limiting" },
-  { title: "Marketing Automation", description: "WhatsApp nei workflow Marketing Automation (Odoo Enterprise)" },
+  { title: "SuperChat Base", description: "Il cuore del sistema: API, webhook, gestione 6 canali e coda eventi real-time" },
+  { title: "Chatter Interface", description: "Interfaccia chat a 3 colonne con 17 componenti OWL reattivi e ricerca full-text" },
+  { title: "Chatter Extension", description: "Pulsante WhatsApp in qualsiasi modulo Odoo con mail.thread — rispondi dal preventivo, dal ticket, dall'ordine" },
+  { title: "CRM Integration", description: "Creazione lead automatica da form web, trigger template su cambio stage, variabili dinamiche dai dati lead, logging nel chatter" },
+  { title: "Sale Integration", description: "Invio veloce preventivi via WhatsApp + Email con link portale e conferma automatica" },
+  { title: "Campaign", description: "Campagne WhatsApp massive con scheduling, rate limiting, progress tracking e report delivery" },
+  { title: "Marketing Automation", description: "Workflow multi-step nel Marketing Automation di Odoo Enterprise: WhatsApp + Email + SMS con branching su stato lead e inattività" },
 ];
 
 export function BuiltForYou() {

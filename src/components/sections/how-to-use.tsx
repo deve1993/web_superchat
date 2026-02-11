@@ -19,9 +19,9 @@ const steps = [
   },
   {
     number: "/3",
-    title: "Inizia a Chattare!",
+    title: "Lead e Chat Automatici",
     description:
-      "Apri l'inbox SuperChat e gestisci WhatsApp, Instagram, Telegram e tutti i canali da Odoo",
+      "I lead arrivano dal web, le notifiche partono in automatico e il team riceve l'assegnazione — tutto dentro Odoo",
   },
 ];
 
@@ -47,13 +47,13 @@ export function HowToUse() {
             Pronto in 3 Step
           </h2>
           <p className="mt-4 max-w-[600px] text-base text-[#73799B]">
-            Dall&apos;installazione alla prima conversazione in pochi minuti.
+            Dall&apos;installazione al primo lead automatico in pochi minuti.
             Nessuna configurazione complessa.
           </p>
         </MotionWrapper>
 
         <div className="mt-16 flex flex-col items-center">
-          <div className="relative w-full max-w-[800px] aspect-video flex items-center justify-center mb-12">
+          <div className="relative w-full max-w-[800px] aspect-[1379/902] flex items-center justify-center mb-12">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeStep}
@@ -68,7 +68,7 @@ export function HowToUse() {
             </AnimatePresence>
           </div>
 
-          <div className="grid w-full max-w-[1000px] gap-4 md:grid-cols-3">
+          <div className="grid w-full max-w-[1000px] gap-3 grid-cols-1 sm:grid-cols-3 sm:gap-4">
             {steps.map((step, index) => (
               <button
                 key={step.number}

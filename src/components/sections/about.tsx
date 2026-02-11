@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { EcosystemMockup } from "../ui/mockups";
 import { SectionSubtitle } from "../ui/section-subtitle";
 import { MotionWrapper, MotionStagger, MotionChild } from "../ui/motion-wrapper";
@@ -13,15 +14,19 @@ const techPills = [
 
 export function About() {
   return (
-    <section id="about" className="relative px-6 pt-24 pb-34 lg:pb-24">
-      <img
+    <section id="about" className="relative overflow-x-clip px-6 pt-24 pb-34 lg:pb-24">
+      <Image
         src="/images/net-3.png"
         alt=""
+        width={300}
+        height={300}
         className="pointer-events-none absolute bottom-0 left-0 w-[300px] opacity-20"
       />
-      <img
+      <Image
         src="/images/net-4.png"
         alt=""
+        width={300}
+        height={300}
         className="pointer-events-none absolute top-0 right-0 w-[300px] opacity-20"
       />
 
@@ -33,8 +38,8 @@ export function About() {
         <div className="mt-12 flex flex-col items-center gap-30 lg:flex-row lg:items-center lg:gap-20">
           <div className="flex flex-1 flex-col items-center text-center lg:items-start lg:text-left">
             <LetterAnimation
-              text="SuperChat trasforma Odoo 18 nel centro nevralgico della tua comunicazione aziendale. Potenza Open Source, integrazione nativa, zero compromessi."
-              className="text-2xl font-semibold leading-snug text-white md:text-3xl lg:text-[36px] lg:leading-[1.4]"
+              text="SuperChat trasforma Odoo 18 in una macchina di vendita automatica: dal primo contatto al lead qualificato, ogni step è tracciato e automatizzato."
+              className="text-xl font-semibold leading-snug text-white sm:text-2xl md:text-3xl lg:text-[36px] lg:leading-[1.4]"
             />
 
             <MotionStagger className="mt-8 flex flex-wrap justify-center gap-2.5 lg:justify-start">
@@ -53,7 +58,7 @@ export function About() {
 
           </div>
 
-          <MotionWrapper delay={0.2} className="relative flex flex-1 items-center justify-center">
+          <MotionWrapper delay={0.2} className="relative flex w-full items-center justify-center lg:flex-1">
             <EcosystemMockup />
           </MotionWrapper>
         </div>
