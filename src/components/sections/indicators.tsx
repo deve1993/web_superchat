@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { SectionSubtitle } from "../ui/section-subtitle";
 import { MotionWrapper, MotionStagger, MotionChild } from "../ui/motion-wrapper";
 import { motion, useSpring, useTransform, useInView } from "framer-motion";
@@ -6,9 +7,9 @@ import { useEffect, useRef } from "react";
 
 const stats = [
   { value: 7, suffix: "", label: "Moduli Specializzati" },
-  { value: 2, suffix: "ms", label: "Risposta Webhook" },
-  { value: 31000, suffix: "+", label: "Righe di Codice" },
-  { value: 6, suffix: "", label: "Canali Integrati" },
+  { value: 0, suffix: "", label: "Lead Persi con l'Automazione" },
+  { value: 3, suffix: "s", label: "Tempo Medio Assegnazione" },
+  { value: 6, suffix: "", label: "Canali Notifica Integrati" },
 ];
 
 
@@ -41,14 +42,18 @@ function Counter({ value, suffix }: { value: number; suffix: string }) {
 export function Indicators() {
   return (
     <section className="relative px-6 py-24">
-      <img
+      <Image
         src="/images/net-10.png"
         alt=""
+        width={300}
+        height={300}
         className="pointer-events-none absolute top-0 left-0 w-[300px] opacity-20"
       />
-      <img
+      <Image
         src="/images/net-9.png"
         alt=""
+        width={300}
+        height={300}
         className="pointer-events-none absolute bottom-0 right-0 w-[300px] opacity-20"
       />
 

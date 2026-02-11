@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { BenefitMockup } from "../ui/mockups";
 import { MessageCircle, Instagram, Facebook, Mail, MessageSquare, Send } from "lucide-react";
 import { SectionSubtitle } from "../ui/section-subtitle";
@@ -16,14 +17,18 @@ export function Benefits() {
 
   return (
     <section id="benefits" className="relative px-6 py-24">
-      <img
+      <Image
         src="/images/net-9.png"
         alt=""
+        width={250}
+        height={250}
         className="pointer-events-none absolute top-0 left-0 w-[250px] opacity-15"
       />
-      <img
+      <Image
         src="/images/net-10.png"
         alt=""
+        width={280}
+        height={280}
         className="pointer-events-none absolute bottom-0 right-0 w-[280px] opacity-10"
       />
       <div className="relative z-10 mx-auto max-w-[1280px]">
@@ -33,12 +38,12 @@ export function Benefits() {
             I Tuoi Vantaggi
           </h2>
           <p className="mt-4 max-w-[700px] text-base text-[#73799B]">
-            Tutto il potere della messaggistica multi-canale, integrato nativamente
-            nel tuo ecosistema Odoo.
+            Dal lead alla vendita: automazione CRM, notifiche intelligenti e assegnazione
+            team integrati nativamente in Odoo.
           </p>
         </MotionWrapper>
 
-        <MotionStagger className="mt-16 grid gap-6 md:grid-cols-6">
+        <MotionStagger className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-6">
           <MotionChild className="card-hover overflow-hidden rounded-[13.6px] border border-[rgba(79,96,250,0.08)] p-6 md:col-span-2 md:p-8" style={{ background: `radial-gradient(circle, rgba(200,210,230,0.06) 2px, transparent 2px), #050A29`, backgroundSize: '24px 24px' }}>
             <h3 className="mb-2 text-xl font-semibold text-white">
               6 Canali, Zero App Esterne
@@ -63,35 +68,38 @@ export function Benefits() {
 
           <MotionChild className="card-hover overflow-hidden rounded-[13.6px] border border-[rgba(79,96,250,0.08)] p-6 md:col-span-2 md:p-8" style={{ background: `radial-gradient(circle, rgba(200,210,230,0.06) 2px, transparent 2px), #050A29`, backgroundSize: '24px 24px' }}>
             <h3 className="mb-2 text-xl font-semibold text-white">
-              Automazione CRM Intelligente
+              Lead Automation
             </h3>
             <p className="mb-4 text-sm text-[#73799B]">
-              Trigger automatici su cambio stage, variabili dinamiche dai dati lead,
-              retry e logging completo nel chatter.
+              Form web → lead Odoo → notifica al commerciale. Trigger automatici
+              su ogni cambio stage, variabili dinamiche dai dati lead, retry e
+              logging nel chatter.
             </p>
             <BenefitMockup variant="crm" />
           </MotionChild>
 
           <MotionChild className="card-hover overflow-hidden rounded-[13.6px] border border-[rgba(79,96,250,0.08)] p-6 md:col-span-2 md:p-8" style={{ background: `radial-gradient(circle, rgba(200,210,230,0.06) 2px, transparent 2px), #050A29`, backgroundSize: '24px 24px' }}>
             <h3 className="mb-2 text-xl font-semibold text-white">
-              Invio Preventivi in 3 Secondi
+              Marketing Automation
             </h3>
             <p className="mb-4 text-sm text-[#73799B]">
-              WhatsApp + Email simultanei con PDF e link portale per accettazione
-              online immediata.
+              Workflow multi-step basati sullo stato del lead: benvenuto su
+              qualifica, reminder su inattività, escalation automatica al
+              manager. WhatsApp + Email + SMS.
             </p>
-            <BenefitMockup variant="quotes" />
+            <BenefitMockup variant="marketing-auto-benefit" />
           </MotionChild>
 
           <MotionChild className="card-hover overflow-hidden rounded-[13.6px] border border-[rgba(79,96,250,0.08)] p-6 md:col-span-3 md:p-8" style={{ background: `radial-gradient(circle, rgba(200,210,230,0.06) 2px, transparent 2px), #050A29`, backgroundSize: '24px 24px' }}>
             <h3 className="mb-2 text-xl font-semibold text-white">
-              Campagne Massive su Scala
+              Assegnazione Team
             </h3>
             <p className="mb-4 text-sm text-[#73799B]">
-              Migliaia di messaggi programmati con ritardi anti-spam, fasce orarie,
-              deduplicazione e limiti giornalieri.
+              Dashboard di assegnazione per il team leader: vedi lead e
+              conversazioni in ingresso, assegna con un click al commerciale
+              giusto. Notifiche istantanee, ruoli granulari.
             </p>
-            <BenefitMockup variant="campaigns" />
+            <BenefitMockup variant="assignment-benefit" />
           </MotionChild>
 
           <MotionChild className="card-hover overflow-hidden rounded-[13.6px] border border-[rgba(79,96,250,0.08)] p-6 md:col-span-3 md:p-8" style={{ background: `radial-gradient(circle, rgba(200,210,230,0.06) 2px, transparent 2px), #050A29`, backgroundSize: '24px 24px' }}>

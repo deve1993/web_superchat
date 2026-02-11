@@ -1,17 +1,30 @@
 "use client";
 
+import Image from "next/image";
 import { useState, useEffect, useCallback } from "react";
-import { Building2, ShoppingCart, Briefcase, TrendingUp } from "lucide-react";
+import { Building2, ShoppingCart, Briefcase, TrendingUp, UserCog } from "lucide-react";
 import { SectionSubtitle } from "../ui/section-subtitle";
 import { MotionWrapper } from "../ui/motion-wrapper";
 import { AnimatePresence, motion } from "framer-motion";
 
 const useCases = [
   {
+    Icon: UserCog,
+    sector: "Sales Manager",
+    description:
+      "Vedi tutti i lead in arrivo nella dashboard. Assegna ogni lead al commerciale giusto con un click, riceve notifica istantanea. Monitora chi segue cosa, senza riunioni.",
+  },
+  {
     Icon: Building2,
     sector: "Aziende B2B",
     description:
-      "Invio automatico preventivi via WhatsApp e follow-up lead con template personalizzati. I tempi di risposta crollano, le conversioni salgono.",
+      "Il prospect compila il form, il lead arriva in Odoo, parte il template WhatsApp al commerciale. Follow-up automatico se non c'è risposta in 48h.",
+  },
+  {
+    Icon: TrendingUp,
+    sector: "Marketing & Vendite",
+    description:
+      "Workflow automatici basati sullo stage: benvenuto su qualifica, proposta su interesse, reminder su inattività. Nurturing multi-canale senza intervento manuale.",
   },
   {
     Icon: ShoppingCart,
@@ -24,12 +37,6 @@ const useCases = [
     sector: "Servizi Professionali",
     description:
       "Promemoria appuntamenti, conferme prenotazioni e comunicazioni urgenti. Tutto gestito centralmente da Odoo senza app esterne.",
-  },
-  {
-    Icon: TrendingUp,
-    sector: "Marketing & Vendite",
-    description:
-      "Campagne WhatsApp segmentate, nurturing automatico e workflow marketing complessi. A/B testing e branch condizionali nativi.",
   },
 ];
 
@@ -47,14 +54,18 @@ export function Testimonials() {
 
   return (
     <section id="use-cases" className="relative px-6 py-24">
-      <img
+      <Image
         src="/images/net-9.png"
         alt=""
+        width={250}
+        height={250}
         className="pointer-events-none absolute top-0 right-0 w-[250px] opacity-20"
       />
-      <img
+      <Image
         src="/images/net-10.png"
         alt=""
+        width={250}
+        height={250}
         className="pointer-events-none absolute bottom-0 left-0 w-[250px] opacity-20"
       />
 
@@ -98,18 +109,20 @@ export function Testimonials() {
             </motion.div>
           </AnimatePresence>
 
-          <div className="mt-12 flex justify-center gap-2">
+          <div className="mt-12 flex justify-center gap-1">
             {useCases.map((_, i) => (
               <button
                 key={i}
                 onClick={() => setActive(i)}
-                className={`h-2 rounded-full transition-all ${
-                  i === active
-                    ? "w-8 bg-[#4F60FA]"
-                    : "w-2 bg-[#73799B]/50 hover:bg-[#73799B]"
-                }`}
+                className="relative flex items-center justify-center h-11 w-11"
                 aria-label={`Vai al caso d'uso ${i + 1}`}
-              />
+              >
+                <span className={`block rounded-full transition-all ${
+                  i === active
+                    ? "w-8 h-2 bg-[#4F60FA]"
+                    : "w-2 h-2 bg-[#73799B]/50 hover:bg-[#73799B]"
+                }`} />
+              </button>
             ))}
           </div>
         </div>
