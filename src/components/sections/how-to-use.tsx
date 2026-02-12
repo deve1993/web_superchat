@@ -30,14 +30,11 @@ export function HowToUse() {
 
   return (
     <section className="relative px-6 py-24">
-      <div
-        className="pointer-events-none absolute inset-0 z-0 opacity-30"
-        style={{
-          backgroundImage: 'url(/images/bg-element-dx.svg)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-        }}
+      <img
+        src="/images/bg-element-dx.svg"
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover opacity-30"
       />
 
       <div className="relative z-10 mx-auto max-w-[1280px]">

@@ -585,24 +585,29 @@ body {
   background-clip: text;
 }
 
-.built-for-you-swiper .swiper-pagination {
-  position: relative;
-  margin-top: 32px;
-}
-
-.built-for-you-swiper .swiper-pagination-bullet {
+.built-for-you-pagination .swiper-pagination-bullet {
   width: 10px;
   height: 10px;
   background: rgba(79, 96, 250, 0.3);
   opacity: 1;
   transition: all 0.3s ease;
-  padding: 8px;
-  background-clip: content-box;
+  border-radius: 5px;
+  display: inline-block;
+  cursor: pointer;
 }
 
-.built-for-you-swiper .swiper-pagination-bullet-active {
+.built-for-you-pagination .swiper-pagination-bullet-active {
   background: #4F60FA;
   width: 28px;
-  border-radius: 5px;
-  background-clip: content-box;
 }
+
+@keyframes crm-icon-wave {
+  0%, 100% { transform: scale(1); box-shadow: var(--crm-shadow); }
+  12% { transform: scale(1.15); box-shadow: var(--crm-glow); }
+  24% { transform: scale(1); box-shadow: var(--crm-shadow); }
+}
+
+.crm-icon-wave-0 { animation: crm-icon-wave 3.2s ease-in-out infinite 0s; }
+.crm-icon-wave-1 { animation: crm-icon-wave 3.2s ease-in-out infinite 0.35s; }
+.crm-icon-wave-2 { animation: crm-icon-wave 3.2s ease-in-out infinite 0.7s; }
+.crm-icon-wave-3 { animation: crm-icon-wave 3.2s ease-in-out infinite 1.05s; }

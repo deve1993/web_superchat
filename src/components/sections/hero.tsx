@@ -7,14 +7,11 @@ export function Hero() {
     <section 
       className="relative flex min-h-screen flex-col items-center justify-center px-6 pt-24 pb-16"
     >
-      <div 
-        className="pointer-events-none absolute inset-0 z-0 opacity-50"
-        style={{ 
-          backgroundImage: 'url(/images/bg-element-2.svg)', 
-          backgroundSize: 'cover', 
-          backgroundPosition: 'center', 
-          backgroundRepeat: 'no-repeat' 
-        }}
+      <img 
+        src="/images/bg-element-2.svg"
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-[1] h-full w-full object-cover opacity-50"
       />
 
       <div className="relative z-10 flex flex-col items-center">

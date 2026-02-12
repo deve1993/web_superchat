@@ -1,11 +1,6 @@
 import Image from "next/image";
 import { SectionSubtitle } from "../ui/section-subtitle";
 import {
-  MotionWrapper,
-  MotionStagger,
-  MotionChild,
-} from "../ui/motion-wrapper";
-import {
   Globe,
   Target,
   Bell,
@@ -78,7 +73,7 @@ export function CrmWorkflow() {
       />
 
       <div className="relative z-10 mx-auto max-w-[1280px]">
-        <MotionWrapper className="flex flex-col items-center text-center">
+        <div className="flex flex-col items-center text-center">
           <SectionSubtitle text="Flusso CRM" />
           <h2 className="mt-6 text-3xl font-bold text-white md:text-4xl lg:text-5xl">
             Dal Form al Commerciale
@@ -89,26 +84,27 @@ export function CrmWorkflow() {
             Un flusso end-to-end: il prospect compila, Odoo crea il lead, il
             team viene notificato e il manager assegna. Zero passaggi manuali.
           </p>
-        </MotionWrapper>
+        </div>
 
-        <MotionStagger className="mt-16 flex flex-col items-center gap-4 md:flex-row md:gap-0 md:justify-center">
+        <div className="mt-16 flex flex-col items-center gap-4 md:flex-row md:gap-0 md:justify-center">
           {steps.map((step, i) => {
             const StepIcon = step.Icon;
             return (
-              <MotionChild
-                key={step.label}
-                className="flex items-center gap-0"
-              >
+              <div key={step.label} className="flex items-center gap-0">
                 <div className="flex flex-col items-center gap-3 px-4">
                   <div
-                    className="flex h-16 w-16 items-center justify-center rounded-2xl"
+                    className={`crm-icon-wave-${i} flex h-16 w-16 items-center justify-center rounded-2xl`}
                     style={{
                       backgroundColor: `${step.color}12`,
                       border: `2px solid ${step.color}30`,
-                      boxShadow: `0 0 24px ${step.color}15`,
-                    }}
+                      "--crm-shadow": `0 0 24px ${step.color}15`,
+                      "--crm-glow": `0 0 32px ${step.color}40, 0 0 48px ${step.color}20`,
+                    } as React.CSSProperties}
                   >
-                    <StepIcon className="h-7 w-7" style={{ color: step.color }} />
+                    <StepIcon
+                      className="h-7 w-7"
+                      style={{ color: step.color }}
+                    />
                   </div>
                   <span
                     className="text-sm font-semibold"
@@ -126,14 +122,14 @@ export function CrmWorkflow() {
                     <ArrowRight className="hidden h-5 w-5 shrink-0 text-[#73799B]/40 md:block" />
                   </>
                 )}
-              </MotionChild>
+              </div>
             );
           })}
-        </MotionStagger>
+        </div>
 
-        <MotionStagger className="mt-20 grid gap-6 md:grid-cols-3">
+        <div className="mt-20 grid gap-6 md:grid-cols-3">
           {details.map((detail) => (
-            <MotionChild
+            <div
               key={detail.title}
               className="card-hover rounded-2xl border border-[rgba(79,96,250,0.08)] p-6 md:p-8"
               style={{
@@ -147,9 +143,9 @@ export function CrmWorkflow() {
               <p className="text-sm leading-relaxed text-[#73799B]">
                 {detail.description}
               </p>
-            </MotionChild>
+            </div>
           ))}
-        </MotionStagger>
+        </div>
       </div>
     </section>
   );

@@ -12,7 +12,6 @@ import { HowToUse } from "@/components/sections/how-to-use";
 import { ContactForm } from "@/components/sections/contact-form";
 import { FinalCta } from "@/components/sections/final-cta";
 import { Footer } from "@/components/sections/footer";
-import { GradientSeparator } from "@/components/ui/gradient-separator";
 import { PageBlooms } from "@/components/ui/page-blooms";
 
 export default function Home() {
@@ -22,23 +21,14 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        <GradientSeparator />
         <About />
-        <GradientSeparator />
         <Features />
-        <GradientSeparator />
         <CrmWorkflow />
-        <GradientSeparator />
         <MidCta />
-        <GradientSeparator />
         <BuiltForYou />
-        <GradientSeparator />
         <Benefits />
-        <GradientSeparator />
         <Indicators />
-        <GradientSeparator />
         <Testimonials />
-        <GradientSeparator />
         <HowToUse />
         <ContactForm />
         <FinalCta />
