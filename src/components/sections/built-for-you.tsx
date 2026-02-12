@@ -90,31 +90,30 @@ export function BuiltForYou() {
             ))}
           </Swiper>
 
+          <div className="mt-8 flex items-center justify-center gap-6">
+            <button
+              onClick={() => swiperRef.current?.slidePrev()}
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-[rgba(79,96,250,0.3)] bg-[rgba(5,10,41,0.8)] backdrop-blur-sm transition-all hover:border-[#4F60FA] hover:bg-[#4F60FA]/10"
+              aria-label="Slide precedente"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4F60FA" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="15 18 9 12 15 6" />
+              </svg>
+            </button>
+
+            <div className="built-for-you-pagination flex items-center gap-2" />
+
+            <button
+              onClick={() => swiperRef.current?.slideNext()}
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-[rgba(79,96,250,0.3)] bg-[rgba(5,10,41,0.8)] backdrop-blur-sm transition-all hover:border-[#4F60FA] hover:bg-[#4F60FA]/10"
+              aria-label="Slide successiva"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4F60FA" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
+            </button>
+          </div>
         </MotionWrapper>
-      </div>
-
-      <div className="relative z-10 mt-8 flex items-center justify-center gap-6">
-        <button
-          onClick={() => swiperRef.current?.slidePrev()}
-          className="flex h-11 w-11 items-center justify-center rounded-full border border-[rgba(79,96,250,0.3)] bg-[rgba(5,10,41,0.8)] backdrop-blur-sm transition-all hover:border-[#4F60FA] hover:bg-[#4F60FA]/10"
-          aria-label="Slide precedente"
-        >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4F60FA" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-            <polyline points="15 18 9 12 15 6" />
-          </svg>
-        </button>
-
-        <div className="built-for-you-pagination flex items-center gap-2" />
-
-        <button
-          onClick={() => swiperRef.current?.slideNext()}
-          className="flex h-11 w-11 items-center justify-center rounded-full border border-[rgba(79,96,250,0.3)] bg-[rgba(5,10,41,0.8)] backdrop-blur-sm transition-all hover:border-[#4F60FA] hover:bg-[#4F60FA]/10"
-          aria-label="Slide successiva"
-        >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4F60FA" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-            <polyline points="9 18 15 12 9 6" />
-          </svg>
-        </button>
       </div>
     </section>
   );
