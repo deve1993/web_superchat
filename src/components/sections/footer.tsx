@@ -3,7 +3,7 @@
 import { useActionState, useRef, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { Linkedin, Github, Globe, ArrowUp } from "lucide-react";
+import { ArrowUp } from "lucide-react";
 import { Logo } from "../ui/logo";
 import { MotionWrapper } from "../ui/motion-wrapper";
 import {
@@ -104,17 +104,7 @@ export function Footer() {
               </p>
             )}
 
-            <div className="mt-6 flex gap-3">
-              <a href="https://www.linkedin.com/company/persevida-sro" target="_blank" rel="noopener noreferrer" className="flex h-11 w-11 items-center justify-center rounded-full border border-[rgba(79,96,250,0.2)] text-[#73799B] transition-all hover:bg-[#4F60FA] hover:border-[#4F60FA] hover:text-white">
-                <Linkedin size={18} />
-              </a>
-              <a href="https://github.com/nicothll" target="_blank" rel="noopener noreferrer" className="flex h-11 w-11 items-center justify-center rounded-full border border-[rgba(79,96,250,0.2)] text-[#73799B] transition-all hover:bg-[#4F60FA] hover:border-[#4F60FA] hover:text-white">
-                <Github size={18} />
-              </a>
-              <a href="https://fl1.cz" target="_blank" rel="noopener noreferrer" className="flex h-11 w-11 items-center justify-center rounded-full border border-[rgba(79,96,250,0.2)] text-[#73799B] transition-all hover:bg-[#4F60FA] hover:border-[#4F60FA] hover:text-white">
-                <Globe size={18} />
-              </a>
-            </div>
+
           </div>
         </div>
 
