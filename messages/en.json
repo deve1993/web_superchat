@@ -1,0 +1,333 @@
+{
+  "metadata": {
+    "title": "SuperChat for Odoo 18 — CRM Automation & Multi-Channel Messaging | Persevida es",
+    "titleTemplate": "{title} | SuperChat for Odoo 18",
+    "description": "Automate your Odoo 18 CRM: web form leads, stage-change notifications, team assignment and messaging across WhatsApp, Instagram, Telegram, Email, SMS. 7 open source modules."
+  },
+  "navbar": {
+    "home": "Home",
+    "features": "Features",
+    "modules": "Modules",
+    "useCases": "Use Cases",
+    "contact": "Contact",
+    "cta": "Request Demo",
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu"
+  },
+  "hero": {
+    "subtitle": "CRM & Automation for Odoo 18",
+    "titleLine1": "From Lead to Sale,",
+    "titleLine2": "Fully Automated in Odoo",
+    "description": "Capture leads from the web, automate notifications, assign to the right team — on WhatsApp, Email and 4 more channels",
+    "cta": "Request a Demo",
+    "ctaSecondary": "Explore Modules"
+  },
+  "about": {
+    "subtitle": "About Us",
+    "description": "SuperChat transforms Odoo 18 into an automatic sales machine: from first contact to qualified lead, every step is tracked and automated.",
+    "pills": {
+      "native": "Native Odoo Integration",
+      "openSource": "Open Source LGPL-3",
+      "modules": "7-Module Architecture",
+      "security": "3-Level Security"
+    }
+  },
+  "features": {
+    "subtitle": "Features",
+    "title": "Power and Simplicity",
+    "titleLine2": "in Every Module",
+    "description": "Free your team from repetitive tasks",
+    "items": {
+      "inbox": {
+        "title": "Unified Multi-Channel Inbox",
+        "description": "Manage WhatsApp, Instagram, Facebook Messenger, Email, SMS and Telegram from a single 3-column interface directly in Odoo."
+      },
+      "crm": {
+        "title": "CRM Lead Module",
+        "description": "Every web form creates a lead in Odoo automatically. Stage-change triggers send custom templates to clients and notifications to the sales team."
+      },
+      "marketing": {
+        "title": "Marketing Automation",
+        "description": "Automated workflows based on lead status: email + WhatsApp on qualification, reminders on inactivity, multi-step nurturing with conditional branching."
+      },
+      "assignment": {
+        "title": "Assignment & Roles",
+        "description": "Dedicated assignment screen: assign leads and conversations to team members. Instant notifications, granular User/Assignator/Admin permissions."
+      }
+    }
+  },
+  "crmWorkflow": {
+    "subtitle": "CRM Flow",
+    "title": "From Web Form to Team",
+    "titleLine2": "Automatically",
+    "description": "Every lead follows an automated path: capture, qualify, notify, assign. Zero manual intervention.",
+    "steps": {
+      "formCapture": {
+        "label": "Web Form",
+        "description": "The prospect fills out the form on your site"
+      },
+      "leadCreation": {
+        "label": "Odoo Lead",
+        "description": "Lead automatically created in the CRM"
+      },
+      "notification": {
+        "label": "Notification",
+        "description": "WhatsApp + Email to the team and the prospect"
+      },
+      "teamAssignment": {
+        "label": "Assignment",
+        "description": "The manager assigns the lead to a sales rep"
+      }
+    },
+    "details": {
+      "autoLead": {
+        "title": "Automatic Lead Creation",
+        "description": "Every form submitted on the site generates a lead in Odoo CRM with all data pre-filled. No manual action, zero lost leads."
+      },
+      "multiChannelNotifications": {
+        "title": "Multi-Channel Status Notifications",
+        "description": "When the lead changes stage — new, qualified, proposal — the right template is automatically sent via WhatsApp and Email."
+      },
+      "assignmentDashboard": {
+        "title": "Assignment Dashboard",
+        "description": "A dedicated screen for the team leader: see all incoming leads, assign with one click, the sales rep receives instant notification."
+      }
+    }
+  },
+  "midCta": {
+    "text": "Zero lost leads, automatic notifications on every stage change, one-click assignment. Your CRM works for you.",
+    "cta": "Book a Demo"
+  },
+  "builtForYou": {
+    "subtitle": "Modules",
+    "title": "7 Modules, One Complete",
+    "titleLine2": "Ecosystem",
+    "description": "Each module adds a specific capability. Install only what you need.",
+    "cta": "Contact Us",
+    "modules": {
+      "base": {
+        "title": "SuperChat Base",
+        "description": "The core of the system: API, webhooks, 6-channel management and real-time event queue"
+      },
+      "chatter": {
+        "title": "Chatter Interface",
+        "description": "3-column chat interface with 17 reactive OWL components and full-text search"
+      },
+      "chatterExtend": {
+        "title": "Chatter Extension",
+        "description": "WhatsApp button in any Odoo module with mail.thread — reply from quotes, tickets, orders"
+      },
+      "crm": {
+        "title": "CRM Integration",
+        "description": "Automatic lead creation from web forms, stage-change template triggers, dynamic variables from lead data, chatter logging"
+      },
+      "sale": {
+        "title": "Sale Integration",
+        "description": "Fast quote sending via WhatsApp + Email with portal link and automatic confirmation"
+      },
+      "campaign": {
+        "title": "Campaign",
+        "description": "Mass WhatsApp campaigns with scheduling, rate limiting, progress tracking and delivery reports"
+      },
+      "marketingAuto": {
+        "title": "Marketing Automation",
+        "description": "Multi-step workflows in Odoo Enterprise Marketing Automation: WhatsApp + Email + SMS with lead status and inactivity branching"
+      }
+    }
+  },
+  "benefits": {
+    "subtitle": "Benefits",
+    "title": "Your Benefits",
+    "description": "From lead to sale: CRM automation, smart notifications and team assignment natively integrated in Odoo.",
+    "stats": {
+      "modules": "Specialized Modules",
+      "zeroLeads": "Leads Lost with Automation",
+      "assignTime": "Average Assignment Time",
+      "channels": "Integrated Notification Channels"
+    },
+    "cards": {
+      "channels": {
+        "title": "6 Channels, Zero External Apps",
+        "description": "WhatsApp, Instagram, Messenger, Email, SMS, Telegram — all in one native Odoo inbox."
+      },
+      "leadAutomation": {
+        "title": "Lead Automation",
+        "description": "Web form → Odoo lead → sales notification. Automatic triggers on every stage change, dynamic variables from lead data, retry and chatter logging."
+      },
+      "marketingAutomation": {
+        "title": "Marketing Automation",
+        "description": "Multi-step workflows based on lead status: welcome on qualification, reminders on inactivity, automatic escalation to manager. WhatsApp + Email + SMS."
+      },
+      "teamAssignment": {
+        "title": "Team Assignment",
+        "description": "Assignment dashboard for team leaders: view incoming leads and conversations, assign with one click to the right rep. Instant notifications, granular roles."
+      },
+      "security": {
+        "title": "Enterprise-Grade Security",
+        "description": "3-level system (User/Assignator/Admin), UUID-protected webhooks, method whitelist, LGPL-3 license."
+      }
+    }
+  },
+  "useCases": {
+    "subtitle": "Use Cases",
+    "title": "SuperChat Works",
+    "titleLine2": "for Your Industry",
+    "description": "From logistics to marketing, every team finds its channel",
+    "items": {
+      "salesManager": {
+        "sector": "Sales Manager",
+        "description": "See all incoming leads in the dashboard. Assign each lead to the right rep with one click, instant notification. Monitor who follows what, without meetings."
+      },
+      "b2b": {
+        "sector": "B2B Companies",
+        "description": "The prospect fills out the form, the lead arrives in Odoo, the WhatsApp template goes to the sales rep. Automatic follow-up if no response in 48h."
+      },
+      "marketing": {
+        "sector": "Marketing & Sales",
+        "description": "Automated workflows based on stage: welcome on qualification, proposal on interest, reminder on inactivity. Multi-channel nurturing without manual intervention."
+      },
+      "ecommerce": {
+        "sector": "E-Commerce & Retail",
+        "description": "Order confirmations, shipment tracking and mass promotional campaigns on WhatsApp. Post-sale support becomes immediate."
+      },
+      "professional": {
+        "sector": "Professional Services",
+        "description": "Appointment reminders, booking confirmations and urgent communications. Everything managed centrally from Odoo without external apps."
+      },
+      "support": {
+        "sector": "Customer Support",
+        "description": "Tickets from WhatsApp, email and live chat converge in a single queue. Quick responses with templates, automatic escalation and SLAs monitored directly in Odoo Helpdesk."
+      }
+    }
+  },
+  "howToUse": {
+    "subtitle": "Get Started",
+    "title": "Ready in 3 Steps",
+    "description": "From installation to your first automated lead in minutes. No complex configuration.",
+    "steps": {
+      "install": {
+        "title": "Install Modules",
+        "description": "Download and install superchat_base in the Odoo 18 addons directory"
+      },
+      "configure": {
+        "title": "Configure Workspace",
+        "description": "Enter SuperChat API credentials and enable webhooks in Settings"
+      },
+      "automate": {
+        "title": "Automated Leads & Chats",
+        "description": "Leads arrive from the web, notifications fire automatically and the team gets assigned — all inside Odoo"
+      }
+    }
+  },
+  "pricing": {
+    "subtitle": "Packages",
+    "title": "Choose Your Package",
+    "description": "Install only the modules you need, scale when you want",
+    "plans": {
+      "starter": {
+        "name": "Starter",
+        "price": "Starting from €X",
+        "period": "/year",
+        "description": "The complete SuperChat infrastructure to start managing multi-channel communications in Odoo.",
+        "cta": "Request Technical Demo",
+        "features": [
+          "SuperChat Base + Chatter + Chatter Extend",
+          "6 integrated communication channels",
+          "Chat interface with 17 OWL components",
+          "Universal WhatsApp button",
+          "Standard onboarding and configuration",
+          "Updates and basic support"
+        ]
+      },
+      "pro": {
+        "name": "Pro",
+        "price": "Starting from €X",
+        "period": "/year",
+        "description": "Everything in Starter plus CRM automation and fast quote sending for sales teams.",
+        "cta": "Book Sales Call",
+        "features": [
+          "All Starter modules included",
+          "CRM automations on lead stage change",
+          "WhatsApp + Email quote sending",
+          "Templates and triggers for sales teams",
+          "Process setup with best practices",
+          "Priority support and flow tuning"
+        ]
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "price": "Contact Us",
+        "period": "",
+        "description": "The complete suite with mass campaigns and Marketing Automation for structured organizations.",
+        "cta": "Talk to an Architect",
+        "features": [
+          "All Pro modules included",
+          "Mass WhatsApp campaigns with scheduling",
+          "Omnichannel Marketing Automation",
+          "Advanced segmentation and journeys",
+          "Dedicated workshop and multi-team rollout",
+          "Enterprise SLA and dedicated contact"
+        ]
+      }
+    },
+    "notes": {
+      "apiRequired": "* SuperChat API account required (not included in package)",
+      "enterpriseRequired": "* Marketing Automation module requires Odoo Enterprise"
+    }
+  },
+  "contact": {
+    "subtitle": "Contact Us",
+    "title": "Automate Your CRM,",
+    "titleLine2": "Close More Sales",
+    "description": "Automatic leads, smart notifications, instant assignment. Your sales team sells, SuperChat does the rest.",
+    "formIntro": "Fill out the form and our team will contact you to show SuperChat in action on your Odoo.",
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Your name",
+      "email": "Email",
+      "emailPlaceholder": "name@company.com",
+      "phone": "Phone",
+      "phonePlaceholder": "+1 555 123 4567",
+      "company": "Company",
+      "companyPlaceholder": "Company name",
+      "website": "Website",
+      "websitePlaceholder": "https://example.com",
+      "package": "Package of interest",
+      "packageDefault": "Select (optional)",
+      "message": "Message",
+      "messagePlaceholder": "Tell us about your project or what you'd like to explore...",
+      "privacy": "I consent to the processing of my personal data under",
+      "privacyLink": "GDPR (EU Reg. 2016/679)",
+      "submit": "Send Request",
+      "submitting": "Sending...",
+      "recaptchaProtected": "Protected by Google reCAPTCHA —",
+      "recaptchaPrivacy": "Privacy",
+      "recaptchaTerms": "Terms",
+      "required": "*"
+    }
+  },
+  "footer": {
+    "description": "Open source Odoo 18 modules for CRM automation and multi-channel messaging.",
+    "quickLinks": "Quick Links",
+    "newsletter": "Newsletter",
+    "newsletterDescription": "Stay updated on new releases and features.",
+    "newsletterPlaceholder": "Your email",
+    "newsletterSubmit": "Subscribe",
+    "newsletterSubmitting": "...",
+    "copyright": "© {year} Persevida es. All rights reserved.",
+    "links": {
+      "home": "Home",
+      "features": "Features",
+      "modules": "Modules",
+      "pricing": "Packages",
+      "contact": "Contact",
+      "privacy": "Privacy Policy",
+      "cookies": "Cookie Policy",
+      "terms": "Terms"
+    }
+  },
+  "contactPage": {
+    "title": "Contact",
+    "description": "Request a free demo of SuperChat for Odoo 18. Fill out the form and our team will get back to you."
+  }
+}

@@ -22,6 +22,10 @@ body {
   overflow-x: hidden;
 }
 
+.grecaptcha-badge {
+  visibility: hidden !important;
+}
+
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -55,73 +59,117 @@ body {
   animation: marquee 12s linear infinite;
 }
 
+.animate-marquee-reverse-fast {
+  animation: marquee-reverse 12s linear infinite;
+}
+
 /* CRM Stage Sequence Animation */
 @keyframes crm-stage-1 {
-  0%, 5% { background-color: rgba(79,96,250,0.5); box-shadow: 0 0 20px rgba(79,96,250,0.3); }
-  25%, 100% { background-color: rgba(29,33,123,0.2); box-shadow: none; }
+  0%, 3% { background-color: rgba(29,33,123,0.15); box-shadow: none; transform: scaleY(0.4); }
+  8% { transform: scaleY(1.08); }
+  12%, 28% { background-color: rgba(79,96,250,0.55); box-shadow: 0 0 24px rgba(79,96,250,0.35); transform: scaleY(1); }
+  38%, 100% { background-color: rgba(29,33,123,0.2); box-shadow: none; transform: scaleY(1); }
 }
 
 @keyframes crm-stage-2 {
-  0%, 30% { background-color: rgba(29,33,123,0.4); box-shadow: none; }
-  35%, 55% { background-color: rgba(79,96,250,0.6); box-shadow: 0 0 20px rgba(79,96,250,0.4); }
-  60%, 100% { background-color: rgba(29,33,123,0.4); box-shadow: none; }
+  0%, 28% { background-color: rgba(29,33,123,0.15); box-shadow: none; transform: scaleY(0.4); }
+  33% { transform: scaleY(1.08); }
+  37%, 58% { background-color: rgba(79,96,250,0.6); box-shadow: 0 0 24px rgba(79,96,250,0.4); transform: scaleY(1); }
+  68%, 100% { background-color: rgba(29,33,123,0.2); box-shadow: none; transform: scaleY(1); }
 }
 
 @keyframes crm-stage-3 {
-  0%, 60% { background-color: rgba(29,33,123,0.2); box-shadow: none; }
-  65%, 85% { background-color: rgba(79,96,250,0.5); box-shadow: 0 0 20px rgba(79,96,250,0.3); }
-  90%, 100% { background-color: rgba(29,33,123,0.2); box-shadow: none; }
+  0%, 58% { background-color: rgba(29,33,123,0.15); box-shadow: none; transform: scaleY(0.4); }
+  63% { transform: scaleY(1.08); }
+  67%, 85% { background-color: rgba(79,96,250,0.55); box-shadow: 0 0 24px rgba(79,96,250,0.35); transform: scaleY(1); }
+  92%, 100% { background-color: rgba(29,33,123,0.2); box-shadow: none; transform: scaleY(1); }
 }
 
 @keyframes crm-badge-appear {
-  0%, 30% { opacity: 0; transform: translateX(-50%) scale(0.7); }
-  38%, 52% { opacity: 1; transform: translateX(-50%) scale(1); }
-  60%, 100% { opacity: 0; transform: translateX(-50%) scale(0.7); }
+  0%, 28% { opacity: 0; transform: translateX(-50%) scale(0.5); }
+  35% { opacity: 1; transform: translateX(-50%) scale(1.15); }
+  40%, 55% { opacity: 1; transform: translateX(-50%) scale(1); }
+  65%, 100% { opacity: 0; transform: translateX(-50%) scale(0.7); }
+}
+
+@keyframes crm-shimmer {
+  0%, 100% { opacity: 0; }
+  10%, 35% { opacity: 1; background: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, transparent 60%); }
+  50% { opacity: 0; }
+}
+
+@keyframes crm-glow-dot {
+  0%, 3% { left: 0%; opacity: 0; }
+  8%, 25% { opacity: 1; }
+  28% { left: 33%; opacity: 1; }
+  33% { left: 33%; opacity: 0; }
+  35% { left: 33%; opacity: 0; }
+  38%, 55% { opacity: 1; }
+  58% { left: 66%; opacity: 1; }
+  63% { left: 66%; opacity: 0; }
+  65% { left: 66%; opacity: 0; }
+  68%, 82% { opacity: 1; }
+  85% { left: 100%; opacity: 0; }
+  86%, 100% { left: 100%; opacity: 0; }
 }
 
 .crm-stage-1 {
-  animation: crm-stage-1 4s ease-in-out infinite;
+  animation: crm-stage-1 5s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+  transform-origin: bottom;
 }
 
 .crm-stage-2 {
-  animation: crm-stage-2 4s ease-in-out infinite;
+  animation: crm-stage-2 5s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+  transform-origin: bottom;
 }
 
 .crm-stage-3 {
-  animation: crm-stage-3 4s ease-in-out infinite;
+  animation: crm-stage-3 5s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+  transform-origin: bottom;
 }
 
 .crm-badge {
-  animation: crm-badge-appear 4s ease-in-out infinite;
+  animation: crm-badge-appear 5s ease-in-out infinite;
+}
+
+.crm-shimmer {
+  animation: crm-shimmer 5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.crm-glow-dot {
+  animation: crm-glow-dot 5s ease-in-out infinite;
+  background: radial-gradient(circle, rgba(79,96,250,0.8), transparent 70%);
 }
 
 @keyframes crm-label-1 {
-  0%, 5% { color: rgba(79,96,250,1); }
-  25%, 100% { color: rgba(115,121,155,0.4); }
+  0%, 3% { color: rgba(115,121,155,0.4); }
+  10%, 28% { color: rgba(219,227,255,1); }
+  38%, 100% { color: rgba(115,121,155,0.4); }
 }
 
 @keyframes crm-label-2 {
-  0%, 30% { color: rgba(115,121,155,0.4); }
-  35%, 55% { color: rgba(79,96,250,1); }
-  60%, 100% { color: rgba(115,121,155,0.4); }
+  0%, 28% { color: rgba(115,121,155,0.4); }
+  37%, 58% { color: rgba(219,227,255,1); }
+  68%, 100% { color: rgba(115,121,155,0.4); }
 }
 
 @keyframes crm-label-3 {
-  0%, 60% { color: rgba(115,121,155,0.4); }
-  65%, 85% { color: rgba(79,96,250,1); }
-  90%, 100% { color: rgba(115,121,155,0.4); }
+  0%, 58% { color: rgba(115,121,155,0.4); }
+  67%, 85% { color: rgba(219,227,255,1); }
+  92%, 100% { color: rgba(115,121,155,0.4); }
 }
 
 .crm-label-1 {
-  animation: crm-label-1 4s ease-in-out infinite;
+  animation: crm-label-1 5s ease-in-out infinite;
 }
 
 .crm-label-2 {
-  animation: crm-label-2 4s ease-in-out infinite;
+  animation: crm-label-2 5s ease-in-out infinite;
 }
 
 .crm-label-3 {
-  animation: crm-label-3 4s ease-in-out infinite;
+  animation: crm-label-3 5s ease-in-out infinite;
 }
 
 /* CRM Lead Feature Card — Cascade + Glow */
@@ -427,22 +475,53 @@ body {
   85%, 100% { border-color: rgba(29,33,123,0.2); box-shadow: none; }
 }
 
+@keyframes sec-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes sec-scan {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
 @keyframes sec-label {
   0%, 5% { color: transparent; background-color: transparent; border-color: transparent; }
   12%, 70% { color: #DBE3FF; background-color: rgba(79,96,250,0.12); border-color: rgba(79,96,250,0.3); }
   85%, 100% { color: transparent; background-color: transparent; border-color: transparent; }
 }
 
+@keyframes sec-arrow {
+  0%, 5% { opacity: 0; color: transparent; }
+  14%, 70% { opacity: 1; color: rgba(79,96,250,0.6); }
+  85%, 100% { opacity: 0; color: transparent; }
+}
+
 @keyframes sec-lock-glow {
-  0%, 48% { opacity: 0.5; filter: none; }
-  55%, 70% { opacity: 1; filter: drop-shadow(0 0 10px rgba(40,200,64,0.6)); }
-  85%, 100% { opacity: 0.5; filter: none; }
+  0%, 42% { opacity: 0.4; filter: none; }
+  48% { opacity: 0.6; filter: none; }
+  55%, 70% { opacity: 1; filter: drop-shadow(0 0 14px rgba(40,200,64,0.7)) drop-shadow(0 0 4px rgba(40,200,64,0.3)); }
+  85%, 100% { opacity: 0.4; filter: none; }
+}
+
+@keyframes sec-lock-shackle {
+  0%, 42% { transform: translateY(0); }
+  48% { transform: translateY(-3px); }
+  52% { transform: translateY(-3px); }
+  56%, 100% { transform: translateY(0); }
+}
+
+@keyframes sec-lock-body {
+  0%, 50% { background-color: rgba(255,255,255,0.5); }
+  56%, 70% { background-color: rgba(40,200,64,0.7); }
+  85%, 100% { background-color: rgba(255,255,255,0.5); }
 }
 
 @keyframes sec-secured {
-  0%, 50% { color: transparent; letter-spacing: 0.15em; }
-  58%, 70% { color: #28C840; letter-spacing: 0.2em; }
-  85%, 100% { color: transparent; letter-spacing: 0.15em; }
+  0%, 50% { color: transparent; letter-spacing: 0.15em; transform: scaleX(0.9); }
+  56% { color: #28C840; letter-spacing: 0.3em; transform: scaleX(1.05); }
+  62%, 70% { color: #28C840; letter-spacing: 0.2em; transform: scaleX(1); text-shadow: 0 0 12px rgba(40,200,64,0.5); }
+  85%, 100% { color: transparent; letter-spacing: 0.15em; transform: scaleX(0.9); text-shadow: none; }
 }
 
 @keyframes sec-pulse {
@@ -453,14 +532,21 @@ body {
   77%, 100% { transform: scale(1); }
 }
 
-.sec-ring-1 { animation: sec-ring-1 6s ease-in-out infinite; }
-.sec-ring-2 { animation: sec-ring-2 6s ease-in-out infinite; }
-.sec-ring-3 { animation: sec-ring-3 6s ease-in-out infinite, sec-pulse 6s ease-in-out infinite; }
-.sec-label-1 { animation: sec-label 6s ease-in-out infinite; }
-.sec-label-2 { animation: sec-label 6s ease-in-out infinite 0.9s; }
-.sec-label-3 { animation: sec-label 6s ease-in-out infinite 1.8s; }
-.sec-lock { animation: sec-lock-glow 6s ease-in-out infinite; }
-.sec-secured { animation: sec-secured 6s ease-in-out infinite; }
+.sec-ring-1 { animation: sec-ring-1 7s ease-in-out infinite; }
+.sec-ring-2 { animation: sec-ring-2 7s ease-in-out infinite; }
+.sec-ring-3 { animation: sec-ring-3 7s ease-in-out infinite, sec-pulse 7s ease-in-out infinite; }
+.sec-rotate { animation: sec-rotate 30s linear infinite; }
+.sec-rotate-reverse { animation: sec-rotate 24s linear infinite reverse; }
+.sec-scan { animation: sec-scan 4s linear infinite; pointer-events: none; }
+.sec-label-1 { animation: sec-label 7s ease-in-out infinite; }
+.sec-label-2 { animation: sec-label 7s ease-in-out infinite 0.9s; }
+.sec-label-3 { animation: sec-label 7s ease-in-out infinite 1.8s; }
+.sec-arrow-1 { animation: sec-arrow 7s ease-in-out infinite 0.5s; }
+.sec-arrow-2 { animation: sec-arrow 7s ease-in-out infinite 1.4s; }
+.sec-lock { animation: sec-lock-glow 7s ease-in-out infinite; }
+.sec-lock-shackle { animation: sec-lock-shackle 7s ease-in-out infinite; }
+.sec-lock-body { animation: sec-lock-body 7s ease-in-out infinite; }
+.sec-secured { animation: sec-secured 7s ease-in-out infinite; }
 
 .animate-marquee-slow {
   animation: marquee 40s linear infinite;
@@ -551,6 +637,28 @@ body {
 .auto-line-1 { animation: auto-line-draw 8s ease-out infinite 1.8s; transform-origin: left; }
 .auto-line-2 { animation: auto-line-draw 8s ease-out infinite 3.0s; transform-origin: left; }
 
+/* Assignment Benefit — Cascade rows + badge pulse */
+@keyframes assign-row-in {
+  0%, 100% { opacity: 0; transform: translateX(16px); }
+  12%, 80% { opacity: 1; transform: translateX(0); }
+  90% { opacity: 0; transform: translateX(0); }
+}
+
+@keyframes assign-badge-in {
+  0%, 100% { opacity: 0; transform: scale(0.6); }
+  16%, 22% { opacity: 1; transform: scale(1.15); }
+  28%, 80% { opacity: 1; transform: scale(1); }
+  90% { opacity: 0; transform: scale(1); }
+}
+
+.assign-row-0 { animation: assign-row-in 8s ease-out infinite 0s; }
+.assign-row-1 { animation: assign-row-in 8s ease-out infinite 0.6s; }
+.assign-row-2 { animation: assign-row-in 8s ease-out infinite 1.2s; }
+
+.assign-badge-0 { animation: assign-badge-in 8s ease-out infinite 0.4s; }
+.assign-badge-1 { animation: assign-badge-in 8s ease-out infinite 1.0s; }
+.assign-badge-2 { animation: assign-badge-in 8s ease-out infinite 1.6s; }
+
 .btn-glow {
   box-shadow: 0 0 8px 0 #373CC3;
   transition: box-shadow 0.3s ease;
@@ -585,29 +693,71 @@ body {
   background-clip: text;
 }
 
-.built-for-you-pagination .swiper-pagination-bullet {
-  width: 10px;
-  height: 10px;
-  background: rgba(79, 96, 250, 0.3);
-  opacity: 1;
-  transition: all 0.3s ease;
-  border-radius: 5px;
-  display: inline-block;
-  cursor: pointer;
+
+
+@keyframes crm-step-icon {
+  0%, 100% { transform: scale(0.85); opacity: 0.4; filter: drop-shadow(0 0 0 transparent); }
+  8%, 12% { transform: scale(1.2); opacity: 1; filter: var(--step-glow); }
+  16%, 80% { transform: scale(1); opacity: 1; filter: var(--step-glow); }
+  88% { transform: scale(1); opacity: 0.4; filter: drop-shadow(0 0 0 transparent); }
 }
 
-.built-for-you-pagination .swiper-pagination-bullet-active {
-  background: #4F60FA;
-  width: 28px;
+@keyframes crm-step-label {
+  0%, 100% { opacity: 0.4; }
+  8%, 80% { opacity: 1; }
+  88% { opacity: 0.4; }
 }
 
-@keyframes crm-icon-wave {
-  0%, 100% { transform: scale(1); box-shadow: var(--crm-shadow); }
-  12% { transform: scale(1.15); box-shadow: var(--crm-glow); }
-  24% { transform: scale(1); box-shadow: var(--crm-shadow); }
+@keyframes crm-ring-in {
+  0%, 100% { transform: scale(0.5); opacity: 0; border-width: 2px; }
+  8% { transform: scale(0.8); opacity: 0.8; border-width: 2px; }
+  20% { transform: scale(1); opacity: 0.3; border-width: 1px; }
+  30%, 100% { transform: scale(1.2); opacity: 0; border-width: 1px; }
 }
 
-.crm-icon-wave-0 { animation: crm-icon-wave 3.2s ease-in-out infinite 0s; }
-.crm-icon-wave-1 { animation: crm-icon-wave 3.2s ease-in-out infinite 0.35s; }
-.crm-icon-wave-2 { animation: crm-icon-wave 3.2s ease-in-out infinite 0.7s; }
-.crm-icon-wave-3 { animation: crm-icon-wave 3.2s ease-in-out infinite 1.05s; }
+@keyframes crm-ring-outer {
+  0%, 100% { transform: scale(0.4); opacity: 0; border-width: 1.5px; }
+  12% { transform: scale(0.7); opacity: 0.5; border-width: 1.5px; }
+  28% { transform: scale(1); opacity: 0.15; border-width: 1px; }
+  40%, 100% { transform: scale(1.15); opacity: 0; border-width: 1px; }
+}
+
+@keyframes crm-arrow-glow {
+  0%, 100% { opacity: 0; transform: translateX(-6px); }
+  15%, 25% { opacity: 1; transform: translateX(0); }
+  40% { opacity: 0; transform: translateX(6px); }
+}
+
+@keyframes crm-arrow-base {
+  0%, 100% { opacity: 0.15; }
+  15%, 30% { opacity: 0.5; }
+  40% { opacity: 0.15; }
+}
+
+.crm-step-icon-0 { animation: crm-step-icon 9s ease-in-out infinite 0s; }
+.crm-step-icon-1 { animation: crm-step-icon 9s ease-in-out infinite 1.8s; }
+.crm-step-icon-2 { animation: crm-step-icon 9s ease-in-out infinite 3.6s; }
+.crm-step-icon-3 { animation: crm-step-icon 9s ease-in-out infinite 5.4s; }
+
+.crm-step-label-0 { animation: crm-step-label 9s ease-in-out infinite 0s; }
+.crm-step-label-1 { animation: crm-step-label 9s ease-in-out infinite 1.8s; }
+.crm-step-label-2 { animation: crm-step-label 9s ease-in-out infinite 3.6s; }
+.crm-step-label-3 { animation: crm-step-label 9s ease-in-out infinite 5.4s; }
+
+.crm-ring-0 { animation: crm-ring-in 9s ease-out infinite 0s; border-style: solid; }
+.crm-ring-1 { animation: crm-ring-in 9s ease-out infinite 1.8s; border-style: solid; }
+.crm-ring-2 { animation: crm-ring-in 9s ease-out infinite 3.6s; border-style: solid; }
+.crm-ring-3 { animation: crm-ring-in 9s ease-out infinite 5.4s; border-style: solid; }
+
+.crm-ring-outer-0 { animation: crm-ring-outer 9s ease-out infinite 0.15s; border-style: solid; }
+.crm-ring-outer-1 { animation: crm-ring-outer 9s ease-out infinite 1.95s; border-style: solid; }
+.crm-ring-outer-2 { animation: crm-ring-outer 9s ease-out infinite 3.75s; border-style: solid; }
+.crm-ring-outer-3 { animation: crm-ring-outer 9s ease-out infinite 5.55s; border-style: solid; }
+
+.crm-arrow-0 { animation: crm-arrow-base 9s ease-in-out infinite 1.2s; }
+.crm-arrow-1 { animation: crm-arrow-base 9s ease-in-out infinite 3.0s; }
+.crm-arrow-2 { animation: crm-arrow-base 9s ease-in-out infinite 4.8s; }
+
+.crm-arrow-glow-0 { animation: crm-arrow-glow 9s ease-out infinite 1.2s; opacity: 0; }
+.crm-arrow-glow-1 { animation: crm-arrow-glow 9s ease-out infinite 3.0s; opacity: 0; }
+.crm-arrow-glow-2 { animation: crm-arrow-glow 9s ease-out infinite 4.8s; opacity: 0; }

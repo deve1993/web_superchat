@@ -29,7 +29,7 @@ export default function PrivacyPage() {
             1. Titolare del Trattamento
           </h2>
           <p className="text-[#73799B] leading-relaxed mb-4">
-            Il Titolare del trattamento dei dati è <span className="font-medium text-white">Persevida sro</span>, con sede legale a Praga, Repubblica Ceca. Per qualsiasi domanda riguardante la presente informativa o il trattamento dei tuoi dati, puoi contattarci all'indirizzo email: <a href="mailto:info@fl1.cz" className="text-[#4F60FA] hover:text-[#DBE3FF] transition-colors underline">info@fl1.cz</a>.
+            Il Titolare del trattamento dei dati è <span className="font-medium text-white">Persevida es</span>, con sede legale a Praga, Repubblica Ceca. Per qualsiasi domanda riguardante la presente informativa o il trattamento dei tuoi dati, puoi contattarci all'indirizzo email: <a href="mailto:info@fl1.cz" className="text-[#4F60FA] hover:text-[#DBE3FF] transition-colors underline">info@fl1.cz</a>.
           </p>
 
           <h2 className="text-xl font-semibold text-white mt-12 mb-4">
@@ -75,7 +75,7 @@ export default function PrivacyPage() {
             I tuoi dati personali non saranno venduti o ceduti a terzi. Potranno essere condivisi solo con:
           </p>
           <ul className="list-disc list-inside text-[#73799B] space-y-2 mb-4">
-            <li>Personale autorizzato di <span className="font-medium text-white">Persevida sro</span>.</li>
+            <li>Personale autorizzato di <span className="font-medium text-white">Persevida es</span>.</li>
             <li>Fornitori di servizi tecnologici necessari al funzionamento del sito e del CRM (es. Odoo).</li>
           </ul>
 

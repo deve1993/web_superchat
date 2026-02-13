@@ -103,7 +103,7 @@ export default function CookiePolicyPage() {
             9. Contatti
           </h2>
           <p className="text-[#73799B] leading-relaxed mb-4">
-            Il Titolare del trattamento è <span className="font-medium text-white">Persevida sro</span>, con sede a Praga, Repubblica Ceca.
+            Il Titolare del trattamento è <span className="font-medium text-white">Persevida es</span>, con sede a Praga, Repubblica Ceca.
             <br />
             Email: <a href="mailto:info@fl1.cz" className="text-[#4F60FA] hover:text-[#DBE3FF] transition-colors underline">info@fl1.cz</a>
           </p>

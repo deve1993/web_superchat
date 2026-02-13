@@ -2,64 +2,43 @@ import Image from "next/image";
 import { Check } from "lucide-react";
 import { SectionSubtitle } from "../ui/section-subtitle";
 import { MotionWrapper, MotionStagger, MotionChild } from "../ui/motion-wrapper";
-const plans = [
-  {
-    name: "Avvio",
-    icon: "/images/diamond-basic.svg",
-    price: "A partire da \u20acX",
-    period: "/anno",
-    description:
-      "L'infrastruttura completa SuperChat per iniziare a gestire le comunicazioni multi-canale in Odoo.",
-    features: [
-      "SuperChat Base + Chatter + Chatter Extend",
-      "6 canali di comunicazione integrati",
-      "Interfaccia chat con 17 componenti OWL",
-      "Pulsante WhatsApp universale",
-      "Onboarding e configurazione standard",
-      "Aggiornamenti e supporto base",
-    ],
-    cta: "Richiedi Demo Tecnica",
-    featured: false,
-  },
-  {
-    name: "Pro",
-    icon: "/images/diamond-standard.svg",
-    price: "A partire da \u20acX",
-    period: "/anno",
-    description:
-      "Tutto il pacchetto Avvio più automazione CRM e invio veloce preventivi per team commerciali.",
-    features: [
-      "Tutti i moduli Avvio inclusi",
-      "Automazioni CRM su cambio stage lead",
-      "Invio preventivi WhatsApp + Email",
-      "Template e trigger per team vendite",
-      "Setup processi con best practice",
-      "Supporto prioritario e tuning flussi",
-    ],
-    cta: "Prenota Call Commerciale",
-    featured: true,
-  },
-  {
-    name: "Enterprise",
-    icon: "/images/diamond-enterprise.svg",
-    price: "Contattaci",
-    period: "",
-    description:
-      "La suite completa con campagne massive e Marketing Automation per organizzazioni strutturate.",
-    features: [
-      "Tutti i moduli Pro inclusi",
-      "Campagne WhatsApp massive con scheduling",
-      "Marketing Automation omnicanale",
-      "Segmentazione avanzata e journey",
-      "Workshop dedicato e rollout multi-team",
-      "SLA enterprise e referente dedicato",
-    ],
-    cta: "Parla con un Architect",
-    featured: false,
-  },
-];
+import { getTranslations } from "next-intl/server";
 
-export function Pricing() {
+export async function Pricing() {
+  const t = await getTranslations("pricing");
+  const plans = [
+    {
+      name: t("plans.starter.name"),
+      icon: "/images/diamond-basic.svg",
+      price: t("plans.starter.price"),
+      period: t("plans.starter.period"),
+      description: t("plans.starter.description"),
+      features: t.raw("plans.starter.features") as string[],
+      cta: t("plans.starter.cta"),
+      featured: false,
+    },
+    {
+      name: t("plans.pro.name"),
+      icon: "/images/diamond-standard.svg",
+      price: t("plans.pro.price"),
+      period: t("plans.pro.period"),
+      description: t("plans.pro.description"),
+      features: t.raw("plans.pro.features") as string[],
+      cta: t("plans.pro.cta"),
+      featured: true,
+    },
+    {
+      name: t("plans.enterprise.name"),
+      icon: "/images/diamond-enterprise.svg",
+      price: t("plans.enterprise.price"),
+      period: t("plans.enterprise.period"),
+      description: t("plans.enterprise.description"),
+      features: t.raw("plans.enterprise.features") as string[],
+      cta: t("plans.enterprise.cta"),
+      featured: false,
+    },
+  ];
+
   return (
     <section id="pricing" className="relative px-6 py-24">
       <Image
@@ -78,12 +57,12 @@ export function Pricing() {
       />
       <div className="relative z-10 mx-auto max-w-[1280px]">
         <MotionWrapper className="flex flex-col items-center text-center">
-          <SectionSubtitle text="Pacchetti" />
+          <SectionSubtitle text={t("subtitle")} />
           <h2 className="mt-6 text-3xl font-bold text-white md:text-4xl lg:text-5xl">
-            Scegli il Tuo Pacchetto
+            {t("title")}
           </h2>
           <p className="mt-4 text-base text-[#73799B]">
-            Installa solo i moduli che ti servono, scala quando vuoi
+            {t("description")}
           </p>
         </MotionWrapper>
 
@@ -148,10 +127,10 @@ export function Pricing() {
 
         <MotionWrapper delay={0.4} className="mt-10 text-center space-y-2">
           <p className="text-xs text-[#73799B]">
-            * Account SuperChat API obbligatorio (non incluso nel pacchetto)
+            {t("notes.apiRequired")}
           </p>
           <p className="text-xs text-[#73799B]">
-            * Il modulo Marketing Automation richiede Odoo Enterprise
+            {t("notes.enterpriseRequired")}
           </p>
         </MotionWrapper>
       </div>

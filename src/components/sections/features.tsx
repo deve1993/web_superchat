@@ -3,38 +3,37 @@ import { FeatureMockup } from "../ui/mockups";
 import { MessagesSquare, Target, BotMessageSquare, UserCheck } from "lucide-react";
 import { SectionSubtitle } from "../ui/section-subtitle";
 import { MotionWrapper, MotionStagger, MotionChild } from "../ui/motion-wrapper";
-const features = [
-  {
-    Icon: MessagesSquare,
-    title: "Inbox Multi-Canale Unificata",
-    description:
-      "Gestisci WhatsApp, Instagram, Facebook Messenger, Email, SMS e Telegram da un'unica interfaccia a 3 colonne direttamente in Odoo.",
-    color: "#25D366",
-  },
-  {
-    Icon: Target,
-    title: "Modulo CRM Lead",
-    description:
-      "Ogni form web crea un lead in Odoo automaticamente. Trigger su cambio stage inviano template personalizzati al cliente e notifiche al team commerciale.",
-    color: "#4F60FA",
-  },
-  {
-    Icon: BotMessageSquare,
-    title: "Marketing Automation",
-    description:
-      "Workflow automatici basati sullo stato del lead: email + WhatsApp su qualifica, reminder su inattività, nurturing multi-step con branch condizionali.",
-    color: "#F59E0B",
-  },
-  {
-    Icon: UserCheck,
-    title: "Assegnazione & Ruoli",
-    description:
-      "Schermata di assegnazione dedicata: assegna lead e conversazioni ai membri del team. Notifiche istantanee, permessi granulari User/Assignator/Admin.",
-    color: "#28C840",
-  },
-];
+import { getTranslations } from "next-intl/server";
 
-export function Features() {
+export async function Features() {
+  const t = await getTranslations("features");
+  const features = [
+    {
+      Icon: MessagesSquare,
+      title: t("items.inbox.title"),
+      description: t("items.inbox.description"),
+      color: "#25D366",
+    },
+    {
+      Icon: Target,
+      title: t("items.crm.title"),
+      description: t("items.crm.description"),
+      color: "#4F60FA",
+    },
+    {
+      Icon: BotMessageSquare,
+      title: t("items.marketing.title"),
+      description: t("items.marketing.description"),
+      color: "#F59E0B",
+    },
+    {
+      Icon: UserCheck,
+      title: t("items.assignment.title"),
+      description: t("items.assignment.description"),
+      color: "#28C840",
+    },
+  ];
+
   return (
     <section id="features" className="relative px-6 pt-16 pb-24 lg:pt-24">
       <Image
@@ -53,14 +52,14 @@ export function Features() {
       />
       <div className="relative z-10 mx-auto max-w-[1280px]">
         <MotionWrapper className="flex flex-col items-center text-center">
-          <SectionSubtitle text="Funzionalità" />
+          <SectionSubtitle text={t("subtitle")} />
           <h2 className="mt-6 text-3xl font-bold text-white md:text-4xl lg:text-5xl">
-            Potenza e Semplicità
+            {t("title")}
             <br />
-            in Ogni Modulo
+            {t("titleLine2")}
           </h2>
           <p className="mt-4 text-base text-[#73799B] md:text-lg">
-            Libera il tuo team dalle attività ripetitive
+            {t("description")}
           </p>
         </MotionWrapper>
 

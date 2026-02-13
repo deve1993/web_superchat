@@ -1,0 +1,333 @@
+{
+  "metadata": {
+    "title": "SuperChat pro Odoo 18 — CRM Automatizace & Vícekanálové Zprávy | Persevida es",
+    "titleTemplate": "{title} | SuperChat pro Odoo 18",
+    "description": "Automatizujte CRM Odoo 18: leady z webových formulářů, notifikace při změně fáze, přiřazení týmu a zprávy přes WhatsApp, Instagram, Telegram, Email, SMS. 7 open source modulů."
+  },
+  "navbar": {
+    "home": "Domů",
+    "features": "Funkce",
+    "modules": "Moduly",
+    "useCases": "Případy Použití",
+    "contact": "Kontakt",
+    "cta": "Požádat o Demo",
+    "menuOpen": "Otevřít menu",
+    "menuClose": "Zavřít menu"
+  },
+  "hero": {
+    "subtitle": "CRM & Automatizace pro Odoo 18",
+    "titleLine1": "Od Leadu k Prodeji,",
+    "titleLine2": "Plně Automaticky v Odoo",
+    "description": "Zachytávejte leady z webu, automatizujte notifikace, přiřaďte správnému týmu — přes WhatsApp, Email a další 4 kanály",
+    "cta": "Požádat o Demo",
+    "ctaSecondary": "Prozkoumat Moduly"
+  },
+  "about": {
+    "subtitle": "O Nás",
+    "description": "SuperChat promění Odoo 18 v automatický prodejní stroj: od prvního kontaktu po kvalifikovaný lead je každý krok sledován a automatizován.",
+    "pills": {
+      "native": "Nativní Integrace Odoo",
+      "openSource": "Open Source LGPL-3",
+      "modules": "Architektura 7 Modulů",
+      "security": "3-Úrovňové Zabezpečení"
+    }
+  },
+  "features": {
+    "subtitle": "Funkce",
+    "title": "Síla a Jednoduchost",
+    "titleLine2": "v Každém Modulu",
+    "description": "Osvoboďte svůj tým od opakujících se úkolů",
+    "items": {
+      "inbox": {
+        "title": "Sjednocená Vícekanálová Schránka",
+        "description": "Spravujte WhatsApp, Instagram, Facebook Messenger, Email, SMS a Telegram z jednoho 3-sloupcového rozhraní přímo v Odoo."
+      },
+      "crm": {
+        "title": "CRM Lead Modul",
+        "description": "Každý webový formulář automaticky vytvoří lead v Odoo. Triggery při změně fáze odesílají personalizované šablony klientům a notifikace obchodnímu týmu."
+      },
+      "marketing": {
+        "title": "Marketing Automatizace",
+        "description": "Automatizované workflow na základě stavu leadu: email + WhatsApp při kvalifikaci, připomínky při neaktivitě, vícekrokový nurturing s podmíněným větvením."
+      },
+      "assignment": {
+        "title": "Přiřazení & Role",
+        "description": "Vyhrazená obrazovka přiřazení: přidělte leady a konverzace členům týmu. Okamžité notifikace, granulární oprávnění User/Assignator/Admin."
+      }
+    }
+  },
+  "crmWorkflow": {
+    "subtitle": "CRM Tok",
+    "title": "Od Webového Formuláře k Týmu",
+    "titleLine2": "Automaticky",
+    "description": "Každý lead sleduje automatizovanou cestu: zachycení, kvalifikace, notifikace, přiřazení. Nulový manuální zásah.",
+    "steps": {
+      "formCapture": {
+        "label": "Webový Formulář",
+        "description": "Zájemce vyplní formulář na webu"
+      },
+      "leadCreation": {
+        "label": "Odoo Lead",
+        "description": "Lead automaticky vytvořen v CRM"
+      },
+      "notification": {
+        "label": "Notifikace",
+        "description": "WhatsApp + Email týmu i zájemci"
+      },
+      "teamAssignment": {
+        "label": "Přiřazení",
+        "description": "Manažer přiřadí lead obchodníkovi"
+      }
+    },
+    "details": {
+      "autoLead": {
+        "title": "Automatické Vytváření Leadů",
+        "description": "Každý vyplněný formulář na webu vygeneruje lead v Odoo CRM se všemi předvyplněnými daty. Žádná manuální akce, nula ztracených leadů."
+      },
+      "multiChannelNotifications": {
+        "title": "Vícekanálové Notifikace dle Stavu",
+        "description": "Když lead změní fázi — nový, kvalifikovaný, nabídka — automaticky se odešle správná šablona přes WhatsApp a Email."
+      },
+      "assignmentDashboard": {
+        "title": "Dashboard Přiřazení",
+        "description": "Dedikovaná obrazovka pro vedoucího týmu: zobrazí všechny příchozí leady, přiřadí jedním kliknutím, obchodník obdrží okamžitou notifikaci."
+      }
+    }
+  },
+  "midCta": {
+    "text": "Nulové ztracené leady, automatické notifikace při každé změně fáze, přiřazení jedním kliknutím. Vaše CRM pracuje za vás.",
+    "cta": "Rezervovat Demo"
+  },
+  "builtForYou": {
+    "subtitle": "Moduly",
+    "title": "7 Modulů, Jeden Kompletní",
+    "titleLine2": "Ekosystém",
+    "description": "Každý modul přidává specifickou schopnost. Nainstalujte jen to, co potřebujete.",
+    "cta": "Kontaktujte Nás",
+    "modules": {
+      "base": {
+        "title": "SuperChat Base",
+        "description": "Jádro systému: API, webhooky, správa 6 kanálů a real-time fronta událostí"
+      },
+      "chatter": {
+        "title": "Chatter Interface",
+        "description": "3-sloupcové chatovací rozhraní se 17 reaktivními OWL komponentami a fulltextovým vyhledáváním"
+      },
+      "chatterExtend": {
+        "title": "Chatter Extension",
+        "description": "Tlačítko WhatsApp v jakémkoli modulu Odoo s mail.thread — odpovídejte z nabídky, tiketu, objednávky"
+      },
+      "crm": {
+        "title": "CRM Integrace",
+        "description": "Automatické vytváření leadů z webových formulářů, triggery šablon při změně fáze, dynamické proměnné z dat leadu, logování v chatteru"
+      },
+      "sale": {
+        "title": "Sale Integrace",
+        "description": "Rychlé odesílání nabídek přes WhatsApp + Email s odkazem na portál a automatickým potvrzením"
+      },
+      "campaign": {
+        "title": "Kampaně",
+        "description": "Hromadné WhatsApp kampaně s plánováním, rate limitingem, sledováním průběhu a reporty doručení"
+      },
+      "marketingAuto": {
+        "title": "Marketing Automatizace",
+        "description": "Vícekrokové workflow v Odoo Enterprise Marketing Automation: WhatsApp + Email + SMS s větvením podle stavu leadu a neaktivity"
+      }
+    }
+  },
+  "benefits": {
+    "subtitle": "Výhody",
+    "title": "Vaše Výhody",
+    "description": "Od leadu k prodeji: CRM automatizace, chytré notifikace a přiřazení týmu nativně integrované v Odoo.",
+    "stats": {
+      "modules": "Specializovaných Modulů",
+      "zeroLeads": "Ztracených Leadů s Automatizací",
+      "assignTime": "Průměrný Čas Přiřazení",
+      "channels": "Integrovaných Notifikačních Kanálů"
+    },
+    "cards": {
+      "channels": {
+        "title": "6 Kanálů, Žádné Externí Aplikace",
+        "description": "WhatsApp, Instagram, Messenger, Email, SMS, Telegram — vše v jedné nativní Odoo schránce."
+      },
+      "leadAutomation": {
+        "title": "Lead Automatizace",
+        "description": "Webový formulář → Odoo lead → notifikace obchodníkovi. Automatické triggery při každé změně fáze, dynamické proměnné z dat leadu, retry a logování v chatteru."
+      },
+      "marketingAutomation": {
+        "title": "Marketing Automatizace",
+        "description": "Vícekrokové workflow na základě stavu leadu: uvítání při kvalifikaci, připomínky při neaktivitě, automatická eskalace k manažerovi. WhatsApp + Email + SMS."
+      },
+      "teamAssignment": {
+        "title": "Přiřazení Týmu",
+        "description": "Dashboard přiřazení pro vedoucí týmu: zobrazení příchozích leadů a konverzací, přiřazení jedním kliknutím správnému obchodníkovi. Okamžité notifikace, granulární role."
+      },
+      "security": {
+        "title": "Zabezpečení Enterprise Úrovně",
+        "description": "3-úrovňový systém (User/Assignator/Admin), UUID-chráněné webhooky, whitelist metod, licence LGPL-3."
+      }
+    }
+  },
+  "useCases": {
+    "subtitle": "Případy Použití",
+    "title": "SuperChat Pracuje",
+    "titleLine2": "pro Vaše Odvětví",
+    "description": "Od logistiky po marketing, každý tým najde svůj kanál",
+    "items": {
+      "salesManager": {
+        "sector": "Sales Manager",
+        "description": "Zobrazení všech příchozích leadů v dashboardu. Přiřaďte každý lead správnému obchodníkovi jedním kliknutím, okamžitá notifikace. Sledujte kdo se o co stará, bez porad."
+      },
+      "b2b": {
+        "sector": "B2B Firmy",
+        "description": "Prospect vyplní formulář, lead dorazí do Odoo, WhatsApp šablona jde obchodníkovi. Automatický follow-up pokud není odpověď do 48h."
+      },
+      "marketing": {
+        "sector": "Marketing & Prodej",
+        "description": "Automatizované workflow podle fáze: uvítání při kvalifikaci, návrh při zájmu, připomínka při neaktivitě. Vícekanálový nurturing bez manuálního zásahu."
+      },
+      "ecommerce": {
+        "sector": "E-Commerce & Retail",
+        "description": "Potvrzení objednávek, sledování zásilek a hromadné propagační kampaně na WhatsApp. Poprodejní podpora se stane okamžitou."
+      },
+      "professional": {
+        "sector": "Profesionální Služby",
+        "description": "Připomínky schůzek, potvrzení rezervací a urgentní komunikace. Vše řízeno centrálně z Odoo bez externích aplikací."
+      },
+      "support": {
+        "sector": "Zákaznická Podpora",
+        "description": "Tikety z WhatsApp, emailu a live chatu se slévají do jedné fronty. Rychlé odpovědi se šablonami, automatická eskalace a SLA monitorované přímo v Odoo Helpdesk."
+      }
+    }
+  },
+  "howToUse": {
+    "subtitle": "Jak Začít",
+    "title": "Připraveno ve 3 Krocích",
+    "description": "Od instalace k prvnímu automatizovanému leadu za pár minut. Žádná složitá konfigurace.",
+    "steps": {
+      "install": {
+        "title": "Nainstalujte Moduly",
+        "description": "Stáhněte a nainstalujte superchat_base do adresáře addons Odoo 18"
+      },
+      "configure": {
+        "title": "Nakonfigurujte Workspace",
+        "description": "Zadejte přihlašovací údaje API SuperChat a aktivujte webhooky v Nastavení"
+      },
+      "automate": {
+        "title": "Automatické Leady & Chaty",
+        "description": "Leady přicházejí z webu, notifikace se odesílají automaticky a tým dostane přiřazení — vše uvnitř Odoo"
+      }
+    }
+  },
+  "pricing": {
+    "subtitle": "Balíčky",
+    "title": "Vyberte si Svůj Balíček",
+    "description": "Nainstalujte jen moduly, které potřebujete, škálujte když chcete",
+    "plans": {
+      "starter": {
+        "name": "Start",
+        "price": "Od €X",
+        "period": "/rok",
+        "description": "Kompletní infrastruktura SuperChat pro začátek správy vícekanálové komunikace v Odoo.",
+        "cta": "Požádat o Technické Demo",
+        "features": [
+          "SuperChat Base + Chatter + Chatter Extend",
+          "6 integrovaných komunikačních kanálů",
+          "Chatovací rozhraní se 17 OWL komponentami",
+          "Univerzální tlačítko WhatsApp",
+          "Standardní onboarding a konfigurace",
+          "Aktualizace a základní podpora"
+        ]
+      },
+      "pro": {
+        "name": "Pro",
+        "price": "Od €X",
+        "period": "/rok",
+        "description": "Vše z balíčku Start plus CRM automatizace a rychlé odesílání nabídek pro obchodní týmy.",
+        "cta": "Rezervovat Obchodní Hovor",
+        "features": [
+          "Všechny moduly Start zahrnuty",
+          "CRM automatizace při změně fáze leadu",
+          "Odesílání nabídek WhatsApp + Email",
+          "Šablony a triggery pro obchodní týmy",
+          "Nastavení procesů s best practices",
+          "Prioritní podpora a ladění toků"
+        ]
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "price": "Kontaktujte Nás",
+        "period": "",
+        "description": "Kompletní sada s hromadnými kampaněmi a Marketing Automatizací pro strukturované organizace.",
+        "cta": "Mluvte s Architektem",
+        "features": [
+          "Všechny moduly Pro zahrnuty",
+          "Hromadné WhatsApp kampaně s plánováním",
+          "Omnikanálová Marketing Automatizace",
+          "Pokročilá segmentace a journeys",
+          "Dedikovaný workshop a multi-team rollout",
+          "Enterprise SLA a dedikovaný kontakt"
+        ]
+      }
+    },
+    "notes": {
+      "apiRequired": "* Účet SuperChat API je vyžadován (není součástí balíčku)",
+      "enterpriseRequired": "* Modul Marketing Automatizace vyžaduje Odoo Enterprise"
+    }
+  },
+  "contact": {
+    "subtitle": "Kontaktujte Nás",
+    "title": "Automatizujte Své CRM,",
+    "titleLine2": "Uzavřete Více Obchodů",
+    "description": "Automatické leady, chytré notifikace, okamžité přiřazení. Váš obchodní tým prodává, SuperChat dělá zbytek.",
+    "formIntro": "Vyplňte formulář a náš tým vás kontaktuje, aby vám ukázal SuperChat v akci na vašem Odoo.",
+    "form": {
+      "name": "Jméno",
+      "namePlaceholder": "Vaše jméno",
+      "email": "Email",
+      "emailPlaceholder": "jmeno@firma.cz",
+      "phone": "Telefon",
+      "phonePlaceholder": "+420 777 123 456",
+      "company": "Firma",
+      "companyPlaceholder": "Název firmy",
+      "website": "Web",
+      "websitePlaceholder": "https://priklad.cz",
+      "package": "Balíček zájmu",
+      "packageDefault": "Vyberte (volitelné)",
+      "message": "Zpráva",
+      "messagePlaceholder": "Řekněte nám o svém projektu nebo co byste chtěli prozkoumat...",
+      "privacy": "Souhlasím se zpracováním mých osobních údajů podle",
+      "privacyLink": "GDPR (Nařízení EU 2016/679)",
+      "submit": "Odeslat Požadavek",
+      "submitting": "Odesílání...",
+      "recaptchaProtected": "Chráněno Google reCAPTCHA —",
+      "recaptchaPrivacy": "Ochrana Soukromí",
+      "recaptchaTerms": "Podmínky",
+      "required": "*"
+    }
+  },
+  "footer": {
+    "description": "Open source moduly Odoo 18 pro CRM automatizaci a vícekanálové zprávy.",
+    "quickLinks": "Rychlé Odkazy",
+    "newsletter": "Newsletter",
+    "newsletterDescription": "Buďte informováni o nových verzích a funkcích.",
+    "newsletterPlaceholder": "Váš email",
+    "newsletterSubmit": "Odebírat",
+    "newsletterSubmitting": "...",
+    "copyright": "© {year} Persevida es. Všechna práva vyhrazena.",
+    "links": {
+      "home": "Domů",
+      "features": "Funkce",
+      "modules": "Moduly",
+      "pricing": "Balíčky",
+      "contact": "Kontakt",
+      "privacy": "Zásady Ochrany Soukromí",
+      "cookies": "Zásady Cookies",
+      "terms": "Podmínky"
+    }
+  },
+  "contactPage": {
+    "title": "Kontakt",
+    "description": "Požádejte o bezplatné demo SuperChat pro Odoo 18. Vyplňte formulář a náš tým se vám ozve."
+  }
+}

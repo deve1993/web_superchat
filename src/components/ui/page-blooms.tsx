@@ -61,10 +61,8 @@ const blooms = [
   { color: "rgb(245, 158, 11)", width: 320, height: 240, opacity: 0.35, className: "top-[85%] left-[0%]", drift: 0 },
   { color: "rgb(6, 182, 212)", width: 260, height: 180, opacity: 0.3, className: "top-[87%] left-[25%]", drift: 1 },
 
-  // --- FinalCta (88-94%) ---
-  { color: "rgb(225, 48, 108)", width: 350, height: 250, opacity: 0.4, className: "top-[89%] left-[40%]", drift: 0 },
-  { color: "rgb(37, 211, 102)", width: 300, height: 220, opacity: 0.4, className: "top-[90%] right-[5%]", drift: 1 },
-  { color: "rgb(139, 92, 246)", width: 380, height: 280, opacity: 0.45, className: "top-[92%] left-[10%]", drift: 2 },
+  // --- Contact / FinalCta (88-94%) ---
+  { color: "rgb(37, 211, 102)", width: 300, height: 220, opacity: 0.3, className: "top-[90%] right-[5%]", drift: 1 },
 
   // --- Footer (94-100%) ---
   { color: "rgb(6, 182, 212)", width: 350, height: 250, opacity: 0.35, className: "top-[95%] right-[5%]", drift: 2 },

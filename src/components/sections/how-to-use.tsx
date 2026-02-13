@@ -5,28 +5,28 @@ import { StepMockup } from "../ui/mockups";
 import { SectionSubtitle } from "../ui/section-subtitle";
 import { MotionWrapper } from "../ui/motion-wrapper";
 import { AnimatePresence, motion } from "framer-motion";
-
-const steps = [
-  {
-    number: "/1",
-    title: "Installa i Moduli",
-    description: "Scarica e installa superchat_base nella directory addons di Odoo 18",
-  },
-  {
-    number: "/2",
-    title: "Configura il Workspace",
-    description: "Inserisci le credenziali API SuperChat e attiva i webhook in Impostazioni",
-  },
-  {
-    number: "/3",
-    title: "Lead e Chat Automatici",
-    description:
-      "I lead arrivano dal web, le notifiche partono in automatico e il team riceve l'assegnazione — tutto dentro Odoo",
-  },
-];
+import { useTranslations } from "next-intl";
 
 export function HowToUse() {
+  const t = useTranslations("howToUse");
   const [activeStep, setActiveStep] = useState(0);
+  const steps = [
+    {
+      number: "/1",
+      title: t("steps.install.title"),
+      description: t("steps.install.description"),
+    },
+    {
+      number: "/2",
+      title: t("steps.configure.title"),
+      description: t("steps.configure.description"),
+    },
+    {
+      number: "/3",
+      title: t("steps.automate.title"),
+      description: t("steps.automate.description"),
+    },
+  ];
 
   return (
     <section className="relative px-6 py-24">
@@ -39,13 +39,12 @@ export function HowToUse() {
 
       <div className="relative z-10 mx-auto max-w-[1280px]">
         <MotionWrapper className="flex flex-col items-center text-center">
-          <SectionSubtitle text="Come Iniziare" />
+          <SectionSubtitle text={t("subtitle")} />
           <h2 className="mt-6 text-3xl font-bold text-white md:text-4xl lg:text-5xl">
-            Pronto in 3 Step
+            {t("title")}
           </h2>
           <p className="mt-4 max-w-[600px] text-base text-[#73799B]">
-            Dall&apos;installazione al primo lead automatico in pochi minuti.
-            Nessuna configurazione complessa.
+            {t("description")}
           </p>
         </MotionWrapper>
 

@@ -4,15 +4,17 @@ import { SectionSubtitle } from "../ui/section-subtitle";
 import { MotionWrapper, MotionStagger, MotionChild } from "../ui/motion-wrapper";
 import { LetterAnimation } from "../ui/letter-animation";
 import { Shield, Blocks, Code, Puzzle } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 
-const techPills = [
-  { label: "Integrazione Nativa Odoo", icon: Puzzle },
-  { label: "Open Source LGPL-3", icon: Code },
-  { label: "Architettura a 7 Moduli", icon: Blocks },
-  { label: "Sicurezza a 3 Livelli", icon: Shield },
-];
+export async function About() {
+  const t = await getTranslations("about");
+  const techPills = [
+    { label: t("pills.native"), icon: Puzzle },
+    { label: t("pills.openSource"), icon: Code },
+    { label: t("pills.modules"), icon: Blocks },
+    { label: t("pills.security"), icon: Shield },
+  ];
 
-export function About() {
   return (
     <section id="about" className="relative overflow-x-clip px-6 pt-24 pb-34 lg:pb-24">
       <Image
@@ -32,13 +34,13 @@ export function About() {
 
       <div className="relative z-10 mx-auto max-w-[1280px]">
         <MotionWrapper className="flex flex-col items-center text-center">
-          <SectionSubtitle text="Chi Siamo" />
+          <SectionSubtitle text={t("subtitle")} />
         </MotionWrapper>
 
         <div className="mt-12 flex flex-col items-center gap-30 lg:flex-row lg:items-center lg:gap-20">
           <div className="flex flex-1 flex-col items-center text-center lg:items-start lg:text-left">
             <LetterAnimation
-              text="SuperChat trasforma Odoo 18 in una macchina di vendita automatica: dal primo contatto al lead qualificato, ogni step è tracciato e automatizzato."
+              text={t("description")}
               className="text-xl font-semibold leading-snug text-white sm:text-2xl md:text-3xl lg:text-[36px] lg:leading-[1.4]"
             />
 

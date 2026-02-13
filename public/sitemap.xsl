@@ -136,7 +136,7 @@
             </tbody>
           </table>
           <div class="footer">
-            Generata automaticamente — <a href="/">SuperChat per Odoo 18</a> by Persevida sro
+            Generata automaticamente — <a href="/">SuperChat per Odoo 18</a> by Persevida es
           </div>
         </div>
       </body>

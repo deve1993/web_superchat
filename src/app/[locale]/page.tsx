@@ -6,17 +6,15 @@ import { CrmWorkflow } from "@/components/sections/crm-workflow";
 import { MidCta } from "@/components/sections/mid-cta";
 import { BuiltForYou } from "@/components/sections/built-for-you";
 import { Benefits } from "@/components/sections/benefits";
-import { Indicators } from "@/components/sections/indicators";
-import { Testimonials } from "@/components/sections/testimonials";
+import { Testimonials } from "@/components/sections/use-cases";
 import { HowToUse } from "@/components/sections/how-to-use";
 import { ContactForm } from "@/components/sections/contact-form";
-import { FinalCta } from "@/components/sections/final-cta";
 import { Footer } from "@/components/sections/footer";
 import { PageBlooms } from "@/components/ui/page-blooms";
 
 export default function Home() {
   return (
-    <div className="relative">
+    <div className="relative overflow-x-hidden">
       <PageBlooms />
       <Navbar />
       <main>
@@ -27,11 +25,9 @@ export default function Home() {
         <MidCta />
         <BuiltForYou />
         <Benefits />
-        <Indicators />
         <Testimonials />
         <HowToUse />
         <ContactForm />
-        <FinalCta />
       </main>
       <Footer />
     </div>

@@ -1,33 +1,46 @@
 "use client";
 
-import { useActionState, useRef, useEffect } from "react";
+import { useActionState, useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { Send, ChevronDown } from "lucide-react";
 import { SectionSubtitle } from "../ui/section-subtitle";
 import { MotionWrapper } from "../ui/motion-wrapper";
+import { useTranslations } from "next-intl";
 import {
   submitContactForm,
   type ContactFormState,
 } from "@/app/actions/contact";
 
-const initialState: ContactFormState = { success: false, message: "" };
+declare global {
+  interface Window {
+    grecaptcha: {
+      ready: (cb: () => void) => void;
+      execute: (siteKey: string, options: { action: string }) => Promise<string>;
+    };
+  }
+}
 
-const packages = [
-  { value: "", label: "Seleziona (opzionale)" },
-  { value: "Avvio", label: "Avvio" },
-  { value: "Pro", label: "Pro" },
-  { value: "Enterprise", label: "Enterprise" },
-];
+const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ?? "";
+
+const initialState: ContactFormState = { success: false, message: "" };
 
 const inputClasses =
   "w-full rounded-xl border border-[rgba(79,96,250,0.15)] bg-[#0a0a2a] px-4 py-3 text-sm text-white placeholder:text-[#73799B] transition-all focus:border-[#4F60FA] focus:outline-none focus:ring-2 focus:ring-[#4F60FA]/40";
 
 export function ContactForm() {
+  const t = useTranslations("contact");
+  const pricingT = useTranslations("pricing");
   const [state, formAction, isPending] = useActionState(
     submitContactForm,
     initialState
   );
   const formRef = useRef<HTMLFormElement>(null);
+  const packages = [
+    { value: "", label: t("form.packageDefault") },
+    { value: "Avvio", label: pricingT("plans.starter.name") },
+    { value: "Pro", label: pricingT("plans.pro.name") },
+    { value: "Enterprise", label: pricingT("plans.enterprise.name") },
+  ];
 
   useEffect(() => {
     if (state.success) {
@@ -35,10 +48,32 @@ export function ContactForm() {
     }
   }, [state.success]);
 
+  const handleSubmit = useCallback(
+    async (formData: FormData) => {
+      if (RECAPTCHA_SITE_KEY && window.grecaptcha) {
+        try {
+          const token = await new Promise<string>((resolve) => {
+            window.grecaptcha.ready(async () => {
+              const t = await window.grecaptcha.execute(RECAPTCHA_SITE_KEY, {
+                action: "contact_form",
+              });
+              resolve(t);
+            });
+          });
+          formData.set("recaptchaToken", token);
+        } catch {
+          formData.set("recaptchaToken", "");
+        }
+      }
+      return formAction(formData);
+    },
+    [formAction]
+  );
+
   return (
     <section id="contatti" className="relative overflow-hidden px-6 py-24">
       <Image
-        src="/images/bg-contact.webp"
+        src="/images/bg-contact-new.webp"
         alt=""
         fill
         sizes="100vw"
@@ -47,27 +82,32 @@ export function ContactForm() {
       />
 
       <div className="relative z-10 mx-auto max-w-[1280px]">
-        <MotionWrapper className="flex flex-col items-center text-center">
-          <SectionSubtitle text="Contattaci" />
-          <h2 className="mt-6 text-3xl font-bold text-white md:text-4xl lg:text-5xl">
-            Richiedi una Demo
-          </h2>
-          <p className="mt-4 max-w-[520px] text-base text-[#73799B]">
-            Compila il form e il nostro team ti ricontatter&agrave; per
-            mostrarti SuperChat in azione sul tuo Odoo
-          </p>
-        </MotionWrapper>
+        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+          <MotionWrapper className="flex flex-col items-center text-center lg:items-start lg:text-left">
+            <SectionSubtitle text={t("subtitle")} />
+            <h2 className="mt-6 text-3xl font-bold leading-snug text-white md:text-4xl lg:text-5xl lg:leading-tight">
+              {t("title")}
+              <br />
+              {t("titleLine2")}
+            </h2>
+            <p className="mt-6 max-w-[480px] text-base leading-relaxed text-[#73799B]">
+              {t("description")}
+            </p>
+            <p className="mt-4 max-w-[480px] text-sm leading-relaxed text-[#73799B]/70">
+              {t("formIntro")}
+            </p>
+          </MotionWrapper>
 
-        <MotionWrapper delay={0.2} className="mt-16 flex justify-center">
-          <form
-            ref={formRef}
-            action={formAction}
-            className="card-hover w-full max-w-[560px] overflow-hidden rounded-3xl border border-[#4F60FA] px-5 py-8 shadow-[0_0_40px_rgba(79,96,250,0.15)] sm:px-8 sm:py-10 md:px-10"
-            style={{
-              background: `radial-gradient(circle, rgba(200,210,230,0.06) 2px, transparent 2px), #050A29`,
-              backgroundSize: "24px 24px",
-            }}
-          >
+          <MotionWrapper delay={0.2} className="flex justify-center lg:justify-end">
+            <form
+              ref={formRef}
+              action={handleSubmit}
+              className="w-full max-w-[560px] overflow-hidden rounded-3xl border border-[#4F60FA] px-5 py-8 shadow-[0_0_40px_rgba(79,96,250,0.15)] sm:px-8 sm:py-10 md:px-10"
+              style={{
+                background: `radial-gradient(circle, rgba(200,210,230,0.06) 2px, transparent 2px), #050A29`,
+                backgroundSize: "24px 24px",
+              }}
+            >
             <input
               type="text"
               name="website"
@@ -84,7 +124,7 @@ export function ContactForm() {
                     htmlFor="name"
                     className="mb-1.5 block text-sm font-medium text-[#DBE3FF]"
                   >
-                    Nome <span className="text-red-400">*</span>
+                    {t("form.name")} <span className="text-red-400">{t("form.required")}</span>
                   </label>
                   <input
                     id="name"
@@ -92,7 +132,7 @@ export function ContactForm() {
                     type="text"
                     required
                     minLength={2}
-                    placeholder="Il tuo nome"
+                    placeholder={t("form.namePlaceholder")}
                     aria-describedby={!state.success && state.message ? "form-feedback" : undefined}
                     className={inputClasses}
                   />
@@ -103,14 +143,14 @@ export function ContactForm() {
                     htmlFor="email"
                     className="mb-1.5 block text-sm font-medium text-[#DBE3FF]"
                   >
-                    Email <span className="text-red-400">*</span>
+                    {t("form.email")} <span className="text-red-400">{t("form.required")}</span>
                   </label>
                   <input
                     id="email"
                     name="email"
                     type="email"
                     required
-                    placeholder="nome@azienda.com"
+                    placeholder={t("form.emailPlaceholder")}
                     aria-describedby={!state.success && state.message ? "form-feedback" : undefined}
                     className={inputClasses}
                   />
@@ -123,13 +163,13 @@ export function ContactForm() {
                     htmlFor="phone"
                     className="mb-1.5 block text-sm font-medium text-[#DBE3FF]"
                   >
-                    Telefono
+                    {t("form.phone")}
                   </label>
                   <input
                     id="phone"
                     name="phone"
                     type="tel"
-                    placeholder="+39 333 123 4567"
+                    placeholder={t("form.phonePlaceholder")}
                     className={inputClasses}
                   />
                 </div>
@@ -139,40 +179,58 @@ export function ContactForm() {
                     htmlFor="company"
                     className="mb-1.5 block text-sm font-medium text-[#DBE3FF]"
                   >
-                    Azienda
+                    {t("form.company")}
                   </label>
                   <input
                     id="company"
                     name="company"
                     type="text"
-                    placeholder="Nome azienda"
+                    placeholder={t("form.companyPlaceholder")}
                     className={inputClasses}
                   />
                 </div>
               </div>
 
-              <div className="relative">
-                <label
-                  htmlFor="pacchetto"
-                  className="mb-1.5 block text-sm font-medium text-[#DBE3FF]"
-                >
-                  Pacchetto di interesse
-                </label>
-                <select
-                  id="pacchetto"
-                  name="pacchetto"
-                  className={inputClasses + " appearance-none pr-10"}
-                >
-                  {packages.map((pkg) => (
-                    <option key={pkg.value} value={pkg.value}>
-                      {pkg.label}
-                    </option>
-                  ))}
-                </select>
-                <ChevronDown
-                  size={16}
-                  className="pointer-events-none absolute right-4 top-[38px] text-[#73799B]"
-                />
+              <div className="grid gap-5 sm:grid-cols-2">
+                <div>
+                  <label
+                    htmlFor="website_url"
+                    className="mb-1.5 block text-sm font-medium text-[#DBE3FF]"
+                  >
+                    {t("form.website")}
+                  </label>
+                  <input
+                    id="website_url"
+                    name="website_url"
+                    type="url"
+                    placeholder={t("form.websitePlaceholder")}
+                    className={inputClasses}
+                  />
+                </div>
+
+                <div className="relative">
+                  <label
+                    htmlFor="pacchetto"
+                    className="mb-1.5 block text-sm font-medium text-[#DBE3FF]"
+                  >
+                    {t("form.package")}
+                  </label>
+                  <select
+                    id="pacchetto"
+                    name="pacchetto"
+                    className={inputClasses + " appearance-none pr-10"}
+                  >
+                    {packages.map((pkg) => (
+                      <option key={pkg.value} value={pkg.value}>
+                        {pkg.label}
+                      </option>
+                    ))}
+                  </select>
+                  <ChevronDown
+                    size={16}
+                    className="pointer-events-none absolute right-4 top-[38px] text-[#73799B]"
+                  />
+                </div>
               </div>
 
               <div>
@@ -180,7 +238,7 @@ export function ContactForm() {
                   htmlFor="message"
                   className="mb-1.5 block text-sm font-medium text-[#DBE3FF]"
                 >
-                  Messaggio <span className="text-red-400">*</span>
+                  {t("form.message")} <span className="text-red-400">{t("form.required")}</span>
                 </label>
                 <textarea
                   id="message"
@@ -188,31 +246,33 @@ export function ContactForm() {
                   required
                   minLength={10}
                   rows={4}
-                  placeholder="Raccontaci il tuo progetto o cosa vorresti approfondire..."
+                  placeholder={t("form.messagePlaceholder")}
                   aria-describedby={!state.success && state.message ? "form-feedback" : undefined}
                   className={inputClasses + " resize-none"}
                 />
               </div>
 
               <div className="flex items-start gap-3">
-                <input
-                  id="privacy"
-                  name="privacy"
-                  type="checkbox"
-                  required
-                  className="mt-0.5 h-5 w-5 shrink-0 cursor-pointer rounded border-[rgba(79,96,250,0.3)] bg-[#0a0a2a] text-[#4F60FA] accent-[#4F60FA] focus:ring-2 focus:ring-[#4F60FA]/40"
-                />
-                <label htmlFor="privacy" className="text-xs leading-relaxed text-[#73799B]">
-                  Acconsento al trattamento dei miei dati personali ai sensi del{" "}
+                <div className="relative mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center">
+                  <input
+                    id="privacy"
+                    name="privacy"
+                    type="checkbox"
+                    required
+                    className="h-5 w-5 cursor-pointer rounded border-[rgba(79,96,250,0.3)] bg-[#0a0a2a] text-[#4F60FA] accent-[#4F60FA] focus:ring-2 focus:ring-[#4F60FA]/40"
+                  />
+                </div>
+                <label htmlFor="privacy" className="cursor-pointer text-xs leading-relaxed text-[#73799B]">
+                  {t("form.privacy")} {" "}
                   <a
                     href="/privacy"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-[#4F60FA] underline underline-offset-2 hover:text-[#DBE3FF]"
                   >
-                    GDPR (Reg. UE 2016/679)
+                    {t("form.privacyLink")}
                   </a>
-                  . <span className="text-red-400">*</span>
+                  . <span className="text-red-400">{t("form.required")}</span>
                 </label>
               </div>
             </div>
@@ -241,10 +301,18 @@ export function ContactForm() {
               ) : (
                 <Send size={16} />
               )}
-              {isPending ? "Invio in corso..." : "Invia Richiesta"}
+              {isPending ? t("form.submitting") : t("form.submit")}
             </button>
+
+            <p className="mt-4 text-center text-[10px] leading-relaxed text-[#73799B]/60">
+              {t("form.recaptchaProtected")} {" "}
+              <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="underline hover:text-[#73799B]">{t("form.recaptchaPrivacy")}</a>
+              {" "}e{" "}
+              <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer" className="underline hover:text-[#73799B]">{t("form.recaptchaTerms")}</a>
+            </p>
           </form>
-        </MotionWrapper>
+          </MotionWrapper>
+        </div>
       </div>
     </section>
   );

@@ -128,7 +128,7 @@ export const FeatureMockup = ({ variant, className }: { variant: 'channels' | 'w
                   >
                     <Icon className="w-8 h-8" style={{ color: ch.color }} />
                   </div>
-                  <span className="text-[11px] font-medium whitespace-nowrap" style={{ color: `${ch.color}BB` }}>
+                  <span className="text-xs font-medium whitespace-nowrap" style={{ color: `${ch.color}BB` }}>
                     {ch.label}
                   </span>
                 </div>
@@ -152,7 +152,7 @@ export const FeatureMockup = ({ variant, className }: { variant: 'channels' | 'w
                   >
                     <Icon className="w-8 h-8" style={{ color: ch.color }} />
                   </div>
-                  <span className="text-[11px] font-medium whitespace-nowrap" style={{ color: `${ch.color}BB` }}>
+                  <span className="text-xs font-medium whitespace-nowrap" style={{ color: `${ch.color}BB` }}>
                     {ch.label}
                   </span>
                 </div>
@@ -330,94 +330,93 @@ export const ModuleMockup = ({ moduleIndex }: { moduleIndex: number }) => {
     switch (moduleIndex) {
       case 0:
         return (
-          <div className="flex flex-col gap-2 items-center">
-            <div className="w-16 h-16 rounded-full border-4 border-[#4F60FA]/20 flex items-center justify-center">
-              <div className="w-8 h-8 bg-[#4F60FA] rounded-full" />
-            </div>
-            <div className="flex gap-2 mt-2">
-              <div className="w-2 h-2 rounded-full bg-[#73799B]" />
-              <div className="w-2 h-2 rounded-full bg-[#73799B]" />
-              <div className="w-2 h-2 rounded-full bg-[#73799B]" />
-            </div>
-          </div>
+          <Image
+            src="/images/module-base.png"
+            alt="SuperChat Base — API, webhook e gestione 6 canali"
+            width={600}
+            height={338}
+            sizes="(max-width: 1024px) 100vw, 58vw"
+            className="w-full h-auto"
+            loading="lazy"
+          />
         );
       case 1:
         return (
-          <div className="w-3/4 h-3/4 bg-[#00031C] rounded-lg border border-[rgba(79,96,250,0.12)] flex overflow-hidden">
-            <div className="w-1/4 border-r border-[rgba(79,96,250,0.12)] bg-[#050A29]" />
-            <div className="flex-1 p-2 space-y-2">
-              <div className="h-2 w-1/2 bg-[#1D217B] rounded" />
-              <div className="h-2 w-3/4 bg-[#1D217B]/50 rounded" />
-            </div>
-          </div>
+          <Image
+            src="/images/module-chatter.png"
+            alt="Chatter Interface — chat a 3 colonne con componenti OWL"
+            width={600}
+            height={338}
+            sizes="(max-width: 1024px) 100vw, 58vw"
+            className="w-full h-auto"
+            loading="lazy"
+          />
         );
       case 2:
         return (
-          <div className="relative w-full h-full flex items-center justify-center">
-            <div className="w-32 h-20 bg-[#00031C] rounded-lg border border-[rgba(79,96,250,0.12)] p-2">
-              <div className="h-2 w-full bg-[#1D217B]/20 rounded mb-2" />
-              <div className="h-2 w-2/3 bg-[#1D217B]/20 rounded" />
-            </div>
-            <div className="absolute -bottom-2 -right-2 w-10 h-10 bg-[#25D366] rounded-full flex items-center justify-center shadow-lg">
-              <div className="w-5 h-5 bg-white rounded-sm" />
-            </div>
-          </div>
+          <Image
+            src="/images/module-chatter-ext.png"
+            alt="Chatter Extension — pulsante WhatsApp in qualsiasi modulo Odoo"
+            width={600}
+            height={338}
+            sizes="(max-width: 1024px) 100vw, 58vw"
+            className="w-full h-auto"
+            loading="lazy"
+          />
         );
       case 3:
         return (
-          <div className="flex gap-2 w-3/4 h-1/2">
-            <div className="flex-1 bg-[#1D217B]/20 rounded-lg flex flex-col gap-1 p-1">
-              <div className="h-6 bg-[#4F60FA]/20 rounded" />
-              <div className="h-6 bg-[#4F60FA]/20 rounded" />
-            </div>
-            <div className="flex-1 bg-[#1D217B]/10 rounded-lg p-1">
-              <div className="h-6 bg-[#73799B]/20 rounded" />
-            </div>
-            <div className="flex-1 bg-[#1D217B]/10 rounded-lg p-1">
-               <div className="h-6 bg-[#73799B]/20 rounded" />
-            </div>
-          </div>
+          <video
+            src="/videos/crm-integration.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover"
+          />
         );
       case 4:
         return (
-          <div className="w-24 h-32 bg-[#00031C] border border-[rgba(79,96,250,0.12)] rounded-lg p-3 relative">
-            <div className="h-2 w-1/2 bg-[#73799B] rounded mb-2" />
-            <div className="space-y-1">
-              <div className="h-1 w-full bg-[#1D217B]/30 rounded" />
-              <div className="h-1 w-full bg-[#1D217B]/30 rounded" />
-              <div className="h-1 w-full bg-[#1D217B]/30 rounded" />
-            </div>
-            <div className="absolute bottom-3 right-3 w-8 h-8 bg-[#4F60FA] rounded-full flex items-center justify-center">
-              <div className="w-0 h-0 border-t-[4px] border-t-transparent border-l-[6px] border-l-white border-b-[4px] border-b-transparent ml-0.5" />
-            </div>
-          </div>
+          <video
+            src="/videos/sale-integration.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover"
+          />
         );
       case 5:
         return (
-          <div className="grid grid-cols-4 gap-1 w-3/4">
-            {Array.from({ length: 16 }).map((_, i) => (
-              <div key={i} className={`w-full pt-[100%] rounded-sm ${[0, 2, 5, 6, 8, 11, 14, 15].includes(i) ? 'bg-[#4F60FA]/40' : 'bg-[#1D217B]/20'}`} />
-            ))}
-          </div>
+          <video
+            src="/videos/campaign.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover"
+          />
         );
       case 6:
         return (
-          <div className="flex flex-col items-center gap-2">
-            <div className="w-8 h-8 rounded bg-[#4F60FA]/20 border border-[#4F60FA] flex items-center justify-center text-[10px] text-white">START</div>
-            <div className="h-4 w-0.5 bg-[#73799B]/30" />
-            <div className="flex gap-4">
-              <div className="w-6 h-6 rounded bg-[#1D217B] border border-[rgba(79,96,250,0.3)]" />
-              <div className="w-6 h-6 rounded bg-[#1D217B] border border-[rgba(79,96,250,0.3)]" />
-            </div>
-          </div>
+          <video
+            src="/videos/marketing-automation.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover"
+          />
         );
       default:
         return null;
     }
   };
 
+  const isMedia = moduleIndex <= 6;
+
   return (
-    <div className={`${cardBase} w-full aspect-video ${flexCenter} bg-[#06051E]`}>
+    <div className={`${cardBase} w-full ${isMedia ? '' : `aspect-video ${flexCenter}`} bg-[#06051E]`}>
       {renderContent()}
     </div>
   );
@@ -428,21 +427,25 @@ export const BenefitMockup = ({ variant }: { variant: 'crm' | 'quotes' | 'campai
     return (
       <div className="flex flex-col items-center mt-4 gap-5">
         <div className="relative flex items-center justify-center w-full h-48">
-          <div className="sec-ring-3 absolute w-48 h-48 rounded-full" style={{ borderWidth: '2px', borderStyle: 'solid', borderColor: 'rgba(29,33,123,0.2)' }} />
-          <div className="sec-ring-2 absolute w-32 h-32 rounded-full" style={{ borderWidth: '2px', borderStyle: 'solid', borderColor: 'rgba(29,33,123,0.2)' }} />
+          <div className="sec-ring-3 sec-rotate absolute w-48 h-48 rounded-full" style={{ borderWidth: '2px', borderStyle: 'dashed', borderColor: 'rgba(29,33,123,0.2)' }} />
+          <div className="sec-ring-2 sec-rotate-reverse absolute w-32 h-32 rounded-full" style={{ borderWidth: '2px', borderStyle: 'solid', borderColor: 'rgba(29,33,123,0.2)' }} />
           <div className="sec-ring-1 absolute w-20 h-20 rounded-full" style={{ borderWidth: '2px', borderStyle: 'solid', borderColor: 'rgba(29,33,123,0.2)' }} />
 
+          <div className="sec-scan absolute w-48 h-48 rounded-full overflow-hidden" style={{ maskImage: 'conic-gradient(from 0deg, transparent 0deg, black 30deg, transparent 60deg)', WebkitMaskImage: 'conic-gradient(from 0deg, transparent 0deg, black 30deg, transparent 60deg)' }}>
+            <div className="w-full h-full rounded-full" style={{ background: 'radial-gradient(circle, rgba(79,96,250,0.3) 0%, transparent 70%)' }} />
+          </div>
+
           <div className="sec-lock absolute flex flex-col items-center">
-            <div className="w-6 h-5 rounded-t-full" style={{ borderWidth: '2.5px', borderStyle: 'solid', borderColor: 'rgba(255,255,255,0.5)', borderBottom: 'none' }} />
-            <div className="w-8 h-6 rounded-sm" style={{ backgroundColor: 'rgba(255,255,255,0.5)' }} />
+            <div className="sec-lock-shackle w-6 h-5 rounded-t-full" style={{ borderWidth: '2.5px', borderStyle: 'solid', borderColor: 'rgba(255,255,255,0.5)', borderBottom: 'none' }} />
+            <div className="sec-lock-body w-8 h-6 rounded-sm" style={{ backgroundColor: 'rgba(255,255,255,0.5)' }} />
           </div>
         </div>
 
         <div className="flex items-center gap-3">
           <span className="sec-label-1 text-[11px] font-semibold px-3 py-1 rounded-full" style={{ color: 'transparent', backgroundColor: 'transparent', borderWidth: '1px', borderStyle: 'solid', borderColor: 'transparent' }}>User</span>
-          <span className="text-[#73799B]/30">→</span>
+          <span className="sec-arrow-1 text-[#73799B]/30">→</span>
           <span className="sec-label-2 text-[11px] font-semibold px-3 py-1 rounded-full" style={{ color: 'transparent', backgroundColor: 'transparent', borderWidth: '1px', borderStyle: 'solid', borderColor: 'transparent' }}>Assignator</span>
-          <span className="text-[#73799B]/30">→</span>
+          <span className="sec-arrow-2 text-[#73799B]/30">→</span>
           <span className="sec-label-3 text-[11px] font-semibold px-3 py-1 rounded-full" style={{ color: 'transparent', backgroundColor: 'transparent', borderWidth: '1px', borderStyle: 'solid', borderColor: 'transparent' }}>Admin</span>
         </div>
 
@@ -454,22 +457,32 @@ export const BenefitMockup = ({ variant }: { variant: 'crm' | 'quotes' | 'campai
   return (
     <div className={`${cardBase} w-full ${variant === 'campaigns' ? 'h-56' : 'h-48'} mt-4 ${flexCenter} bg-[#050925]`}>
       {variant === 'crm' && (
-        <div className="w-full px-8 flex gap-3 items-end h-32 pb-4">
-          <div className="flex-1 flex flex-col items-center">
-            <div className="crm-stage-1 w-full h-16 rounded-t-lg" />
-            <span className="crm-label-1 mt-2 text-[10px] font-medium">Lead</span>
-          </div>
-          <div className="flex-1 flex flex-col items-center">
-            <div className="crm-stage-2 w-full h-24 rounded-t-lg relative">
-              <div className="crm-badge absolute -top-3 left-1/2 -translate-x-1/2 bg-[#4F60FA] text-white text-[10px] px-2 py-0.5 rounded-full">
-                Auto
+        <div className="w-full px-8 flex flex-col gap-4 h-40 pb-4">
+          <div className="flex items-end gap-3 flex-1">
+            <div className="flex-1 flex flex-col items-center">
+              <div className="crm-stage-1 w-full h-16 rounded-t-lg relative overflow-hidden">
+                <div className="crm-shimmer absolute inset-0" />
               </div>
+              <span className="crm-label-1 mt-2 text-[10px] font-medium">Lead</span>
             </div>
-            <span className="crm-label-2 mt-2 text-[10px] font-medium">Qualifica</span>
+            <div className="flex-1 flex flex-col items-center">
+              <div className="crm-stage-2 w-full h-24 rounded-t-lg relative overflow-hidden">
+                <div className="crm-badge absolute -top-3 left-1/2 -translate-x-1/2 bg-[#4F60FA] text-white text-[10px] px-2 py-0.5 rounded-full whitespace-nowrap">
+                  Auto
+                </div>
+                <div className="crm-shimmer absolute inset-0" />
+              </div>
+              <span className="crm-label-2 mt-2 text-[10px] font-medium">Qualifica</span>
+            </div>
+            <div className="flex-1 flex flex-col items-center">
+              <div className="crm-stage-3 w-full h-20 rounded-t-lg relative overflow-hidden">
+                <div className="crm-shimmer absolute inset-0" />
+              </div>
+              <span className="crm-label-3 mt-2 text-[10px] font-medium">Vinto</span>
+            </div>
           </div>
-          <div className="flex-1 flex flex-col items-center">
-            <div className="crm-stage-3 w-full h-20 rounded-t-lg" />
-            <span className="crm-label-3 mt-2 text-[10px] font-medium">Vinto</span>
+          <div className="relative h-1 w-full rounded-full bg-[#1D217B]/20 overflow-hidden">
+            <div className="crm-glow-dot absolute top-0 h-full w-8 rounded-full" />
           </div>
         </div>
       )}
@@ -569,7 +582,7 @@ export const BenefitMockup = ({ variant }: { variant: 'crm' | 'quotes' | 'campai
         <div className={`${cardBase} w-full h-56 mt-4 ${flexCenter} bg-[#050925]`}>
           <div className="w-full max-w-xs px-6 py-4">
             <div className="flex flex-col items-center gap-2">
-              <div className="w-full flex items-center gap-2 rounded-lg bg-[#4F60FA]/10 border border-[#4F60FA]/20 px-3 py-2">
+              <div className="ma-trigger w-full flex items-center gap-2 rounded-lg bg-[#4F60FA]/10 border border-[#4F60FA]/20 px-3 py-2">
                 <div className="w-6 h-6 rounded bg-[#4F60FA]/30 flex items-center justify-center">
                   <span className="text-[10px] text-[#4F60FA] font-bold">IF</span>
                 </div>
@@ -578,26 +591,26 @@ export const BenefitMockup = ({ variant }: { variant: 'crm' | 'quotes' | 'campai
 
               <div className="flex gap-6 w-full">
                 <div className="flex-1 flex flex-col items-center gap-1.5">
-                  <div className="w-0.5 h-2.5 bg-[#25D366]/40" />
-                  <div className="w-full rounded-lg bg-[#25D366]/5 border border-[#25D366]/20 px-2 py-1.5 text-center">
+                  <div className="ma-left-line-1 w-0.5 h-2.5 bg-[#25D366]/40" />
+                  <div className="ma-left-1 w-full rounded-lg bg-[#25D366]/5 border border-[#25D366]/20 px-2 py-1.5 text-center">
                     <div className="text-[9px] text-[#25D366] font-semibold">SEND</div>
                     <div className="text-[9px] text-[#73799B]">WhatsApp</div>
                   </div>
-                  <div className="w-0.5 h-2.5 bg-[#25D366]/40" />
-                  <div className="w-full rounded-lg bg-[#0088CC]/5 border border-[#0088CC]/20 px-2 py-1.5 text-center">
+                  <div className="ma-left-line-2 w-0.5 h-2.5 bg-[#25D366]/40" />
+                  <div className="ma-left-2 w-full rounded-lg bg-[#0088CC]/5 border border-[#0088CC]/20 px-2 py-1.5 text-center">
                     <div className="text-[9px] text-[#0088CC] font-semibold">WAIT</div>
                     <div className="text-[9px] text-[#73799B]">Email 2h</div>
                   </div>
                 </div>
 
                 <div className="flex-1 flex flex-col items-center gap-1.5">
-                  <div className="w-0.5 h-2.5 bg-[#F59E0B]/40" />
-                  <div className="w-full rounded-lg bg-[#F59E0B]/5 border border-[#F59E0B]/20 px-2 py-1.5 text-center">
+                  <div className="ma-right-line-1 w-0.5 h-2.5 bg-[#F59E0B]/40" />
+                  <div className="ma-right-1 w-full rounded-lg bg-[#F59E0B]/5 border border-[#F59E0B]/20 px-2 py-1.5 text-center">
                     <div className="text-[9px] text-[#F59E0B] font-semibold">NOOP</div>
                     <div className="text-[9px] text-[#73799B]">Reminder</div>
                   </div>
-                  <div className="w-0.5 h-2.5 bg-[#F59E0B]/40" />
-                  <div className="w-full rounded-lg bg-[#E1306C]/5 border border-[#E1306C]/20 px-2 py-1.5 text-center">
+                  <div className="ma-right-line-2 w-0.5 h-2.5 bg-[#F59E0B]/40" />
+                  <div className="ma-right-2 w-full rounded-lg bg-[#E1306C]/5 border border-[#E1306C]/20 px-2 py-1.5 text-center">
                     <div className="text-[9px] text-[#E1306C] font-semibold">ESC</div>
                     <div className="text-[9px] text-[#73799B]">Manager</div>
                   </div>
@@ -616,11 +629,11 @@ export const BenefitMockup = ({ variant }: { variant: 'crm' | 'quotes' | 'campai
               <span className="text-[9px] text-[#73799B] shrink-0">3 lead</span>
             </div>
             {[
-              { initials: 'MR', name: 'Mario R.', role: 'Sales', color: '#4F60FA', lead: 'Acme Corp' },
-              { initials: 'LB', name: 'Laura B.', role: 'Account', color: '#25D366', lead: 'Beta Srl' },
-              { initials: 'MT', name: 'Marco T.', role: 'Support', color: '#F59E0B', lead: 'Gamma SpA' },
+              { initials: 'MR', name: 'Mario R.', role: 'Sales', color: '#4F60FA', lead: 'Acme Corp', idx: 0 },
+              { initials: 'LB', name: 'Laura B.', role: 'Account', color: '#25D366', lead: 'Beta Srl', idx: 1 },
+              { initials: 'MT', name: 'Marco T.', role: 'Support', color: '#F59E0B', lead: 'Gamma SpA', idx: 2 },
             ].map((user) => (
-              <div key={user.name} className="flex items-center gap-2.5 rounded-lg bg-[#050A29] border border-[rgba(79,96,250,0.12)] px-2.5 py-1.5">
+              <div key={user.name} className={`assign-row-${user.idx} flex items-center gap-2.5 rounded-lg bg-[#050A29] border border-[rgba(79,96,250,0.12)] px-2.5 py-1.5 opacity-0`}>
                 <div
                   className="w-6 h-6 rounded-full flex items-center justify-center text-[9px] font-bold text-white shrink-0"
                   style={{ backgroundColor: `${user.color}30`, border: `1.5px solid ${user.color}50` }}
@@ -632,7 +645,7 @@ export const BenefitMockup = ({ variant }: { variant: 'crm' | 'quotes' | 'campai
                   <div className="text-[8px] text-[#73799B]">{user.name} · {user.role}</div>
                 </div>
                 <div
-                  className="px-1.5 py-0.5 rounded-full text-[8px] font-semibold"
+                  className={`assign-badge-${user.idx} px-1.5 py-0.5 rounded-full text-[8px] font-semibold opacity-0`}
                   style={{ backgroundColor: `${user.color}15`, color: user.color }}
                 >
                   Assegnato
