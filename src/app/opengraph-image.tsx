@@ -7,7 +7,7 @@ export const contentType = 'image/png';
 
 export default async function Image() {
   const fontData = await fetch(
-    'https://fonts.gstatic.com/s/poppins/v21/pxiByp8kv8JHgFVrLDD4Z1xlFQ.woff2'
+    'https://fonts.gstatic.com/s/poppins/v24/pxiByp8kv8JHgFVrLCz7Z1xlFQ.woff2'
   ).then((res) => res.arrayBuffer());
 
   return new ImageResponse(

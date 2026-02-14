@@ -1,14 +1,14 @@
 "use server";
 
 import { headers } from "next/headers";
+import { getTranslations } from "next-intl/server";
 import { contactFormSchema } from "@/lib/validators";
 import { sendMail, contactNotificationHtml } from "@/lib/mail";
 
 const ODOO_URL = process.env.ODOO_URL ?? "https://fl1.cz/odoo";
 const ODOO_API_KEY = process.env.ODOO_API_KEY ?? "";
 const ODOO_ENDPOINT_SLUG = process.env.ODOO_ENDPOINT_SLUG ?? "lead";
-const RECAPTCHA_SECRET_KEY = process.env.RECAPTCHA_SECRET_KEY ?? "";
-const RECAPTCHA_SCORE_THRESHOLD = 0.5;
+const TURNSTILE_SECRET_KEY = process.env.TURNSTILE_SECRET_KEY ?? "";
 
 /* ── Rate limiter (in-memory, per IP) ──────────────────────────── */
 const RATE_WINDOW_MS = 60_000;
@@ -38,37 +38,12 @@ export async function submitContactForm(
   _prev: ContactFormState,
   formData: FormData
 ): Promise<ContactFormState> {
+  const locale = (formData.get("locale") as string) || "it";
+  const t = await getTranslations({ locale, namespace: "serverMessages" });
+
   const honeypot = (formData.get("website") as string)?.trim();
   if (honeypot) {
-    return { success: true, message: "Grazie! Ti ricontatteremo al più presto." };
-  }
-
-  if (RECAPTCHA_SECRET_KEY) {
-    const recaptchaToken = (formData.get("recaptchaToken") as string)?.trim();
-    if (!recaptchaToken) {
-      return { success: false, message: "Verifica reCAPTCHA mancante. Ricarica la pagina e riprova." };
-    }
-
-    try {
-      const recaptchaRes = await fetch("https://www.google.com/recaptcha/api/siteverify", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams({
-          secret: RECAPTCHA_SECRET_KEY,
-          response: recaptchaToken,
-        }),
-      });
-
-      const recaptchaData = await recaptchaRes.json();
-
-      if (!recaptchaData.success || recaptchaData.score < RECAPTCHA_SCORE_THRESHOLD) {
-        console.warn("[contact] reCAPTCHA failed:", recaptchaData);
-        return { success: false, message: "Verifica anti-spam fallita. Riprova." };
-      }
-    } catch (err) {
-      console.error("[contact] reCAPTCHA verification error:", err);
-      return { success: false, message: "Errore nella verifica anti-spam. Riprova." };
-    }
+    return { success: true, message: t("contactSuccess") };
   }
 
   const headersList = await headers();
@@ -77,10 +52,42 @@ export async function submitContactForm(
     headersList.get("x-real-ip") ??
     "unknown";
 
+  if (TURNSTILE_SECRET_KEY) {
+    const turnstileToken = (formData.get("turnstileToken") as string)?.trim();
+    if (!turnstileToken) {
+      return { success: false, message: t("turnstileMissing") };
+    }
+
+    try {
+      const verifyRes = await fetch(
+        "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: new URLSearchParams({
+            secret: TURNSTILE_SECRET_KEY,
+            response: turnstileToken,
+            remoteip: ip,
+          }),
+        },
+      );
+
+      const verifyData = await verifyRes.json();
+
+      if (!verifyData.success) {
+        console.warn("[contact] Turnstile verification failed:", verifyData);
+        return { success: false, message: t("turnstileFailed") };
+      }
+    } catch (err) {
+      console.error("[contact] Turnstile verification error:", err);
+      return { success: false, message: t("turnstileError") };
+    }
+  }
+
   if (isRateLimited(ip)) {
     return {
       success: false,
-      message: "Troppe richieste. Riprova tra un minuto.",
+      message: t("rateLimited"),
     };
   }
 
@@ -150,13 +157,13 @@ export async function submitContactForm(
 
     return {
       success: true,
-      message: "Grazie! Ti ricontatteremo al più presto.",
+      message: t("contactSuccess"),
     };
   } catch (err) {
     console.error("[contact] Exception:", err);
     return {
       success: false,
-      message: "Errore di connessione. Riprova tra qualche istante.",
+      message: t("contactError"),
     };
   }
 }

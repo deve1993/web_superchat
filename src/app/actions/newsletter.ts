@@ -1,6 +1,7 @@
 "use server";
 
 import { headers } from "next/headers";
+import { getTranslations } from "next-intl/server";
 import { newsletterSchema } from "@/lib/validators";
 import { sendMail, newsletterNotificationHtml } from "@/lib/mail";
 
@@ -35,6 +36,9 @@ export async function submitNewsletter(
   _prev: NewsletterFormState,
   formData: FormData
 ): Promise<NewsletterFormState> {
+  const locale = (formData.get("locale") as string) || "it";
+  const t = await getTranslations({ locale, namespace: "serverMessages" });
+
   const headersList = await headers();
   const ip =
     headersList.get("x-forwarded-for")?.split(",")[0]?.trim() ??
@@ -44,7 +48,7 @@ export async function submitNewsletter(
   if (isRateLimited(ip)) {
     return {
       success: false,
-      message: "Troppe richieste. Riprova tra un minuto.",
+      message: t("rateLimited"),
     };
   }
 
@@ -93,13 +97,13 @@ export async function submitNewsletter(
 
     return {
       success: true,
-      message: "Iscrizione completata!",
+      message: t("newsletterSuccess"),
     };
   } catch (err) {
     console.error("[newsletter] Exception:", err);
     return {
       success: false,
-      message: "Errore di connessione. Riprova.",
+      message: t("newsletterError"),
     };
   }
 }

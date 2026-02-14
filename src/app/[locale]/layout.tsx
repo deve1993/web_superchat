@@ -1,31 +1,96 @@
 import type { Metadata } from "next";
-import Script from "next/script";
-import { Poppins, Gugi, Megrim } from "next/font/google";
+import localFont from "next/font/local";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
-import { AnalyticsHead, AnalyticsBody, AnalyticsScripts } from "@/components/analytics";
+import { ConsentAwareAnalytics } from "@/components/analytics";
+import { CookieConsent } from "@/components/cookie-consent";
 import "../globals.css";
 
-const poppins = Poppins({
+const poppins = localFont({
   variable: "--font-poppins",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  src: [
+    {
+      path: "../../fonts/poppins-latin-300.woff2",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "../../fonts/poppins-latin-400.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../fonts/poppins-latin-500.woff2",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../../fonts/poppins-latin-600.woff2",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../../fonts/poppins-latin-700.woff2",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../../fonts/poppins-latin-ext-300.woff2",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "../../fonts/poppins-latin-ext-400.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../fonts/poppins-latin-ext-500.woff2",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../../fonts/poppins-latin-ext-600.woff2",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../../fonts/poppins-latin-ext-700.woff2",
+      weight: "700",
+      style: "normal",
+    },
+  ],
   display: "swap",
 });
 
-const gugi = Gugi({
+const gugi = localFont({
   variable: "--font-gugi",
-  subsets: ["latin"],
-  weight: "400",
+  src: [
+    {
+      path: "../../fonts/gugi-latin-400.woff2",
+      weight: "400",
+      style: "normal",
+    },
+  ],
   display: "swap",
 });
 
-const megrim = Megrim({
+const megrim = localFont({
   variable: "--font-megrim",
-  subsets: ["latin"],
-  weight: "400",
+  src: [
+    {
+      path: "../../fonts/megrim-latin-400.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../fonts/megrim-latin-ext-400.woff2",
+      weight: "400",
+      style: "normal",
+    },
+  ],
   display: "swap",
 });
 
@@ -85,6 +150,15 @@ export async function generateMetadata({
     twitter: {
       card: "summary_large_image",
     },
+    icons: {
+      icon: [
+        { url: "/favicon.ico", sizes: "48x48" },
+        { url: "/favicon.svg", type: "image/svg+xml" },
+        { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
+      ],
+      apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+    },
+    manifest: "/site.webmanifest",
   };
 }
 
@@ -152,20 +226,13 @@ export default async function LocaleLayout({
       <head>
         <OrganizationSchema />
         <SoftwareSchema />
-        <AnalyticsHead />
       </head>
       <body className={`${poppins.variable} ${gugi.variable} ${megrim.variable} ${poppins.className} antialiased overflow-x-hidden`}>
-        <AnalyticsBody />
         <NextIntlClientProvider>
           {children}
+          <CookieConsent />
         </NextIntlClientProvider>
-        <AnalyticsScripts />
-        {process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && (
-          <Script
-            src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
-            strategy="lazyOnload"
-          />
-        )}
+        <ConsentAwareAnalytics />
       </body>
     </html>
   );

@@ -1,7 +1,7 @@
 "use client";
 
 import { useActionState, useRef, useEffect } from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { ArrowUp } from "lucide-react";
 import { Logo } from "../ui/logo";
@@ -14,6 +14,7 @@ import {
 const initialState: NewsletterFormState = { success: false, message: "" };
 
 export function Footer() {
+  const locale = useLocale();
   const t = useTranslations("footer");
   const navbarT = useTranslations("navbar");
   const [state, formAction, isPending] = useActionState(
@@ -78,6 +79,7 @@ export function Footer() {
               action={formAction}
               className="flex w-full flex-col gap-2 sm:flex-row sm:items-center sm:rounded-full sm:bg-[#1D217B] sm:p-1.5 sm:gap-0"
             >
+              <input type="hidden" name="locale" value={locale} />
               <input
                 type="email"
                 name="email"

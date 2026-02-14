@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Send, ChevronDown } from "lucide-react";
 import { SectionSubtitle } from "../ui/section-subtitle";
 import { MotionWrapper } from "../ui/motion-wrapper";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import {
   submitContactForm,
   type ContactFormState,
@@ -13,14 +13,26 @@ import {
 
 declare global {
   interface Window {
-    grecaptcha: {
-      ready: (cb: () => void) => void;
-      execute: (siteKey: string, options: { action: string }) => Promise<string>;
+    turnstile: {
+      render: (
+        container: string | HTMLElement,
+        options: {
+          sitekey: string;
+          theme?: "light" | "dark" | "auto";
+          callback?: (token: string) => void;
+          "error-callback"?: () => void;
+          "expired-callback"?: () => void;
+          size?: "normal" | "compact";
+        },
+      ) => string;
+      reset: (widgetId: string) => void;
+      remove: (widgetId: string) => void;
     };
+    onTurnstileLoad?: () => void;
   }
 }
 
-const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ?? "";
+const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "";
 
 const initialState: ContactFormState = { success: false, message: "" };
 
@@ -28,6 +40,7 @@ const inputClasses =
   "w-full rounded-xl border border-[rgba(79,96,250,0.15)] bg-[#0a0a2a] px-4 py-3 text-sm text-white placeholder:text-[#73799B] transition-all focus:border-[#4F60FA] focus:outline-none focus:ring-2 focus:ring-[#4F60FA]/40";
 
 export function ContactForm() {
+  const locale = useLocale();
   const t = useTranslations("contact");
   const pricingT = useTranslations("pricing");
   const [state, formAction, isPending] = useActionState(
@@ -35,6 +48,9 @@ export function ContactForm() {
     initialState
   );
   const formRef = useRef<HTMLFormElement>(null);
+  const turnstileTokenRef = useRef("");
+  const turnstileWidgetId = useRef("");
+  const turnstileContainerRef = useRef<HTMLDivElement>(null);
   const packages = [
     { value: "", label: t("form.packageDefault") },
     { value: "Avvio", label: pricingT("plans.starter.name") },
@@ -45,29 +61,61 @@ export function ContactForm() {
   useEffect(() => {
     if (state.success) {
       formRef.current?.reset();
+      if (turnstileWidgetId.current && window.turnstile) {
+        window.turnstile.reset(turnstileWidgetId.current);
+        turnstileTokenRef.current = "";
+      }
     }
   }, [state.success]);
 
+  useEffect(() => {
+    if (!TURNSTILE_SITE_KEY || !turnstileContainerRef.current) return;
+
+    const script = document.createElement("script");
+    script.src =
+      "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=onTurnstileLoad";
+    script.async = true;
+
+    window.onTurnstileLoad = () => {
+      if (turnstileContainerRef.current) {
+        turnstileWidgetId.current = window.turnstile.render(
+          turnstileContainerRef.current,
+          {
+            sitekey: TURNSTILE_SITE_KEY,
+            theme: "dark",
+            callback: (token: string) => {
+              turnstileTokenRef.current = token;
+            },
+            "expired-callback": () => {
+              turnstileTokenRef.current = "";
+            },
+            "error-callback": () => {
+              turnstileTokenRef.current = "";
+            },
+          },
+        );
+      }
+    };
+
+    document.head.appendChild(script);
+
+    return () => {
+      if (turnstileWidgetId.current && window.turnstile) {
+        window.turnstile.remove(turnstileWidgetId.current);
+      }
+      script.remove();
+      delete window.onTurnstileLoad;
+    };
+  }, []);
+
   const handleSubmit = useCallback(
     async (formData: FormData) => {
-      if (RECAPTCHA_SITE_KEY && window.grecaptcha) {
-        try {
-          const token = await new Promise<string>((resolve) => {
-            window.grecaptcha.ready(async () => {
-              const t = await window.grecaptcha.execute(RECAPTCHA_SITE_KEY, {
-                action: "contact_form",
-              });
-              resolve(t);
-            });
-          });
-          formData.set("recaptchaToken", token);
-        } catch {
-          formData.set("recaptchaToken", "");
-        }
+      if (TURNSTILE_SITE_KEY && turnstileTokenRef.current) {
+        formData.set("turnstileToken", turnstileTokenRef.current);
       }
       return formAction(formData);
     },
-    [formAction]
+    [formAction],
   );
 
   return (
@@ -108,6 +156,7 @@ export function ContactForm() {
                 backgroundSize: "24px 24px",
               }}
             >
+            <input type="hidden" name="locale" value={locale} />
             <input
               type="text"
               name="website"
@@ -291,6 +340,10 @@ export function ContactForm() {
               </div>
             )}
 
+            {TURNSTILE_SITE_KEY && (
+              <div ref={turnstileContainerRef} className="mt-4 flex justify-center" />
+            )}
+
             <button
               type="submit"
               disabled={isPending}
@@ -304,12 +357,12 @@ export function ContactForm() {
               {isPending ? t("form.submitting") : t("form.submit")}
             </button>
 
-            <p className="mt-4 text-center text-[10px] leading-relaxed text-[#73799B]/60">
-              {t("form.recaptchaProtected")} {" "}
-              <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="underline hover:text-[#73799B]">{t("form.recaptchaPrivacy")}</a>
-              {" "}e{" "}
-              <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer" className="underline hover:text-[#73799B]">{t("form.recaptchaTerms")}</a>
-            </p>
+            {TURNSTILE_SITE_KEY && (
+              <p className="mt-4 text-center text-[10px] leading-relaxed text-[#73799B]/60">
+                {t("form.turnstileProtected")}{" "}
+                <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer" className="underline hover:text-[#73799B]">{t("form.turnstilePrivacy")}</a>
+              </p>
+            )}
           </form>
           </MotionWrapper>
         </div>
